@@ -64,7 +64,7 @@ class _SigninViewState extends State<SigninView> {
                 onPressed: () {
                   // Eventually: pushReplacementNamed
                   
-                  Navigator.pushReplacementNamed(context, '/home_page');
+                  Navigator.pushReplacementNamed(context, '/poll');
                 },
                 child: const Text('Sign in')),
             const SizedBox(height: 12.0),

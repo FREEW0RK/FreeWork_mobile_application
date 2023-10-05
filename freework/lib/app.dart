@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:freework/pages/map/main_map.dart';
+import 'package:freework/pages/poll/poll.dart';
 
 
 //import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -10,6 +12,8 @@ import 'src/settings/settings_view.dart';
 
 import 'package:freework/pages/login/login.dart';
 import '/pages/home/home.dart';
+import 'package:freework/pages/poll/poll.dart';
+import 'package:freework/pages/map/main_map.dart';
 
 
 /// The Widget that configures your application.
@@ -52,6 +56,10 @@ class MyApp extends StatelessWidget {
                     return const SampleItemDetailsView();
                   case SampleItemListView.routeName:
                     	return const SampleItemListView();
+                  case MainMap.routeName:
+                      return const MainMap();    
+                  case PollingPage.routeName:
+                      return PollingPage();
                   case SigninView.routeName:
                     return const SigninView();   
                   case HomePage.routeName:
