@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:freework/pages/map/main_map.dart';
 import 'package:freework/pages/poll/poll.dart';
 
 
@@ -10,10 +9,12 @@ import 'src/sample_feature/sample_item_list_view.dart';
 import 'src/settings/settings_controller.dart';
 import 'src/settings/settings_view.dart';
 
+
+import 'package:freework/pages/home/home.dart';
 import 'package:freework/pages/login/login.dart';
-import '/pages/home/home.dart';
-import 'package:freework/pages/poll/poll.dart';
-import 'package:freework/pages/map/main_map.dart';
+import "package:freework/pages/map/main_map.dart";
+
+
 
 
 /// The Widget that configures your application.
@@ -57,9 +58,9 @@ class MyApp extends StatelessWidget {
                   case SampleItemListView.routeName:
                     	return const SampleItemListView();
                   case MainMap.routeName:
-                      return const MainMap();    
+                     return const MainMap();    
                   case PollingPage.routeName:
-                      return PollingPage();
+                      return const PollingPage();
                   case SigninView.routeName:
                     return const SigninView();   
                   case HomePage.routeName:

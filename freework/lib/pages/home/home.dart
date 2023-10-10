@@ -13,14 +13,16 @@ class HomePage extends StatefulWidget {
 
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Full-Screen Video Player',
+      title: 'FREEWORK',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.red,
       ),
-      home: HomePage(),
+      home: const HomePage(),
     );
   }
 }
@@ -29,25 +31,26 @@ class _HomePageState extends State<HomePage> {
   late VideoPlayerController _controller;
 
  
-  @override
-  void initState() {
-    super.initState();
-    _controller = VideoPlayerController.asset('assets/videos/1080p_places.mp4')
-      ..initialize().then((_) {
+@override
+void initState() {
+  super.initState();
+  _controller = VideoPlayerController.asset('assets/videos/1080p_places.mov')
+    ..initialize().then((_) {
+      setState(() {
         // Ensure the first frame is shown
-        setState(() {});
-        // Play the video once it's initialized
-        _controller.play();
-      })
-      ..setLooping(true);
-  }
+      });
+      // Play the video once it's initialized
+      _controller.play();
+    })
+    ..setLooping(true);
+}
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Centered Video Player',
+        title: const Text(
+          'FREEWORK',
           textAlign: TextAlign.center,
         ),
         centerTitle: true,
@@ -68,10 +71,10 @@ class _HomePageState extends State<HomePage> {
             },
             child: Container(
               alignment: Alignment.center,
-              child: Text(
+              child: const Text(
                 '  Start Exploring',
                 style: TextStyle(
-                  color: Colors.black,
+                  color: Colors.white,
                   fontSize: 50.0,
                 ),
               ),

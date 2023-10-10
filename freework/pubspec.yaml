@@ -40,3 +40,5 @@ flutter:
     # Add assets from the images directory to the application.
     - assets/images/
     - assets/videos/
+    - assets/videos/1080p_places.mp4
+    

@@ -3,14 +3,16 @@ import 'package:flutter/material.dart';
 
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Quick Polling App',
+      title: 'Lets get to know you',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.red,
       ),
-      home: PollingPage(),
+      home: const PollingPage(),
     );
   }
 }
@@ -18,6 +20,8 @@ class MyApp extends StatelessWidget {
 class PollingPage extends StatefulWidget {
 
   static const routeName = '/poll';
+
+  const PollingPage({super.key});
 
   @override
   State<PollingPage> createState() => _PollingPageState();
@@ -46,7 +50,7 @@ class _PollingPageState extends State<PollingPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Quick Polling Page'),
+        title: const Text('Quick Polling Page'),
         centerTitle: true,
       ),
       body: Center(
@@ -57,7 +61,7 @@ class _PollingPageState extends State<PollingPage> {
               children: [
                 Text(
                   sliderQuestions[index],
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
                 Slider(
                   value: sliderValues[index].toDouble(),
@@ -86,7 +90,7 @@ class _PollingPageState extends State<PollingPage> {
             ),
           );
         },
-        child: Icon(Icons.arrow_forward),
+        child: const Icon(Icons.arrow_forward),
       ),
     );
   }
@@ -95,7 +99,7 @@ class _PollingPageState extends State<PollingPage> {
 class NextPage extends StatefulWidget {
   final List<int> sliderValues;
 
-  NextPage(this.sliderValues);
+  const NextPage(this.sliderValues, {super.key});
 
   @override
   _NextPageState createState() => _NextPageState();
@@ -108,14 +112,14 @@ class _NextPageState extends State<NextPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Poll Results'),
+        title: const Text('Poll Results'),
         centerTitle: true,
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
+            const Text(
               'Poll Results:',
               style: TextStyle(
                 fontSize: 24.0, // Increase font size
@@ -125,30 +129,30 @@ class _NextPageState extends State<NextPage> {
             for (int i = 0; i < 10; i++)
               Text(
                 'Question ${i + 1}: ${widget.sliderValues[i]}',
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 20.0, // Increase font size
                 ),
               ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('Are the results fine?'),
-                SizedBox(width: 10),
+                const Text('Are the results fine?'),
+                const SizedBox(width: 10),
                 ElevatedButton(
                   onPressed: () {
                     setState(() {
                       resultsConfirmed = true;
                     });
                   },
-                  child: Text('Yes'),
+                  child: const Text('Yes'),
                 ),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 ElevatedButton(
                   onPressed: () {
                     Navigator.pushReplacementNamed(context,"/poll");
                   },
-                  child: Text('No'),
+                  child: const Text('No'),
                 ),
               ],
             ),
@@ -158,7 +162,7 @@ class _NextPageState extends State<NextPage> {
                   // Finish the poll and navigate back to the poll page
                   Navigator.pushReplacementNamed(context,"/main_map");
                 },
-                child: Text('Finish Poll'),
+                child: const Text('Finish Poll'),
               ),
           ],
         ),

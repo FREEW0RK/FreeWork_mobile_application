@@ -18,7 +18,7 @@ class _MainMapState extends State<MainMap> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Google Map Example'),
+        title: Text('FREEWORK MAP'),
       ),
       body: GoogleMap(
         initialCameraPosition: CameraPosition(
