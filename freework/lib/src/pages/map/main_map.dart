@@ -36,8 +36,6 @@ void initState() {
   });
 }
 
-
-
 void addCustomIcon() {
   BitmapDescriptor.fromAssetImage(
           const ImageConfiguration(), "/assets/images/diamond.png")
