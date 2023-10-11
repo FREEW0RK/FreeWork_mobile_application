@@ -13,15 +13,20 @@ dependencies:
   flutter:
     sdk: flutter
   google_maps_flutter: ^2.1.0  # Latest version of Google Maps for Flutter
-
   flutter_localizations:
     sdk: flutter
+
+  badges: ^2.0.3
+  json_theme: ^4.0.0
+  flutter_markdown: ^0.6.13
+  flutter_native_splash: ^2.2.14
+
+
   video_player: ^2.2.15
-  
-  
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.6
+
 
 dev_dependencies:
   flutter_test:
@@ -38,7 +43,11 @@ flutter:
 
   assets:
     # Add assets from the images directory to the application.
+    - assets/
     - assets/images/
     - assets/videos/
     - assets/videos/1080p_places.mp4
+    - assets/fonts/
+    - assets/map_styles/
+    - assets/theme/
     
