@@ -70,10 +70,10 @@ void addCustomIcon() {
         },
         markers: {
           // Add markers for specific places
-          Marker(
-            markerId: const MarkerId('place1'),
-            position: const LatLng(21.298214862534557, -157.816458679196), // Replace with specific place coordinates
-            infoWindow: const InfoWindow(title: 'Public'),
+          const Marker(
+            markerId: MarkerId('place1'),
+            position: LatLng(21.298214862534557, -157.816458679196), // Replace with specific place coordinates
+            infoWindow: InfoWindow(title: 'Public'),
             //icon: markerIcon,
           ),
           const Marker(

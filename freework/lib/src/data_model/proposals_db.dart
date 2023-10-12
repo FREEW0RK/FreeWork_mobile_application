@@ -9,8 +9,8 @@ class PropsData {
     required this.body,
     required this.date,
     required this.userID,
-    this.chapterID,
-    this.gardenID,
+    this.areaID,
+    this.placesID,
   });
 
   String id;
@@ -19,8 +19,8 @@ class PropsData {
   String body;
   String date;
   String userID;
-  String? chapterID;
-  String? gardenID;
+  String? areaID;
+  String? placesID;
 }
 
 /// Provides access to and operations on all defined users.
@@ -29,7 +29,7 @@ class PropsDB {
     PropsData(
         id: 'props-001',
         userID: 'user-001',
-        chapterID: 'chapter-001',
+        areaID: 'chapter-001',
         icon: Icons.severe_cold,
         title: 'Frost Alert',
         body: 'Predicted overnight low of 37\u00B0 for 11/15/22',
@@ -37,7 +37,7 @@ class PropsDB {
     PropsData(
         id: 'props-002',
         userID: 'user-001',
-        gardenID: 'garden-001',
+        placesID: 'garden-001',
         icon: Icons.image_search,
         title: 'Reply to: "Something is eating these bean sprouts...',
         body: '... Looks like it could be a rabbit or...',
@@ -45,7 +45,7 @@ class PropsDB {
     PropsData(
         id: 'props-003',
         userID: 'user-001',
-        chapterID: 'chapter-001',
+        areaID: 'chapter-001',
         icon: Icons.group_add,
         title: 'New Chapter Members',
         body: '@AsaD, @CyTheGuy',
@@ -53,7 +53,7 @@ class PropsDB {
     PropsData(
         id: 'props-004',
         userID: 'user-001',
-        chapterID: 'chapter-001',
+        areaID: 'chapter-001',
         icon: Icons.water_drop,
         title: 'New seed(s) available',
         body: "Lettuce (Flashy Trout's Back), Bean (Tanya's Pink Pod), Squash (Zepplin Delicata)",
@@ -61,7 +61,7 @@ class PropsDB {
     PropsData(
         id: 'props-005',
         userID: 'user-001',
-        gardenID: 'garden-002',
+        placesID: 'garden-002',
         icon: Icons.yard_outlined,
         title: 'First Harvest expected',
         body: "Pepper (Bridge to Paris), Pumpkin (Winter Luxury)",
@@ -69,7 +69,7 @@ class PropsDB {
     PropsData(
         id: 'props-006',
         userID: 'user-001',
-        chapterID: 'chapter-001',
+        areaID: 'chapter-001',
         icon: Icons.pest_control,
         title: 'Pest Alert: Aphids',
         body: "10 gardens with Aphid pest observations this week",
