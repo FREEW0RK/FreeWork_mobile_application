@@ -70,7 +70,8 @@ class MyApp extends StatelessWidget {
                   case StartPage.routeName:
                     	return const StartPage();
                   default:
-                    return const SigninView();
+                    return const PollingPage();
+
                 }
               },
             );

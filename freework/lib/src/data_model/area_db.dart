@@ -1,4 +1,6 @@
 import 'places_db.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 
 /// The data associated with each chapter.
 class AreaData {
@@ -18,6 +20,8 @@ class AreaData {
 
 /// Provides access to and operations on all defined Chapters.
 class AreaDB {
+  AreaDB(this.ref);
+  final ProviderRef<AreaDB> ref;
   final List<AreaData> _areas = [
     AreaData(
         id: 'chapter-001',
@@ -47,6 +51,7 @@ class AreaDB {
   }
 
   List<String> getAssociatedAreaIDs(String userID) {
+    final PlacesDB placesDB = ref.watch(placesDBProvider);
     List<String> placeIDs = placesDB.getAssociatedPlaceIDs(userID: userID);
     Set<String> areaIDs = {};
     for (var placeID in placeIDs) {
@@ -56,6 +61,7 @@ class AreaDB {
   }
 
   List<String> getAssociatedUserIDs(String areaID) {
+    final PlacesDB placesDB = ref.watch(placesDBProvider);
     List<String> placeIDs = placesDB.getAssociatedPlaceIDs(areaID: areaID);
     Set<String> userIDs = {};
     for (var placeID in placeIDs) {
@@ -65,5 +71,15 @@ class AreaDB {
   }
 }
 
+
+
+final areaDBProvider = Provider<AreaDB>((ref) {
+  return AreaDB(ref);
+});
+
+
+
+
+
 /// The singleton instance of a ChapterDB used by clients to access Chapter data.
-AreaDB areaDB = AreaDB();
+//AreaDB areaDB = AreaDB();

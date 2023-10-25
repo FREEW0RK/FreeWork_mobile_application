@@ -4,6 +4,7 @@ import 'area_db.dart';
 import 'user_db.dart';
 
 
+
 /// The data associated with each place.
 class PlacesData {
   PlacesData(
@@ -34,7 +35,8 @@ class PlacesData {
 
   @override
   String toString() {
-    return '<GardenData id: $id, name: $name, description: $description, imagePath: $imagePath, ownerID: $ownerID, chapterID: $areaID, lastUpdate: $lastUpdate, editorIDs: ${editorID
+    return '<GardenData id: $id, name: $name, description: $description, imagePath: $imagePath, ownerID: $ownerID, chapterID: $areaID, lastUpdate: $lastUpdate, editorIDs: ${editorIDs
+    
         .toString()}, viewerIDs: ${visitorIDs.toString()}>';
   }
 
