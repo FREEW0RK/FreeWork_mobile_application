@@ -8,31 +8,53 @@ version: 1.0.0+1
 
 environment:
   sdk: '>=3.1.0 <4.0.0'
+  flutter: '>=3.0.0'
 
+
+
+  
 dependencies:
   flutter:
     sdk: flutter
-  google_maps_flutter: ^2.1.0  # Latest version of Google Maps for Flutter
+ 
   flutter_localizations:
     sdk: flutter
-
+  
   badges: ^2.0.3
   json_theme: ^4.0.0
   flutter_markdown: ^0.6.13
-  flutter_native_splash: ^2.2.14
+  flutter_native_splash: ^2.2.14  
 
+  # Google Maps
+  google_maps_flutter: ^2.1.0  # Latest version of Google Maps for Flutter
 
+  #Riverpod
+  flutter_riverpod: ^2.4.3
+  riverpod_annotation: ^2.2.0
+
+  #Forms  
+  flutter_form_builder: ">=7.7.0"
+  form_builder_validators: ">=8.4.0"
+  intl: ">=0.17.0"
+  flex_color_scheme: ">=6.1.1"
+
+  #Video player
   video_player: ^2.2.15
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.6
 
 
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
   flutter_lints: ^2.0.0
+  build_runner:
+  custom_lint:
+  riverpod_generator: ^3.0.0-dev.3
+  riverpod_lint: ^2.3.0
 
 flutter:
   uses-material-design: true
@@ -40,7 +62,6 @@ flutter:
 
   # Enable generation of localized Strings from arb files.
   generate: true
-
   assets:
     # Add assets from the images directory to the application.
     - assets/

@@ -1,3 +1,8 @@
+//import 'dart:html';
+
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+
 
 /// The data associated with users.
 class UserData {
@@ -13,7 +18,7 @@ class UserData {
   String id;
   String name;
   String email;
-  String location;
+  List location;
   String username;
   String? imagePath;
   String initials;
@@ -21,12 +26,17 @@ class UserData {
 
 /// Provides access to and operations on all defined users.
 class UserDB {
+  // create UserDB in ref (constructor)
+  UserDB(this.ref);
+  // Provider
+
+  final ProviderRef<UserDB> ref;
   final List<UserData> _users = [
    UserData(
     id: 'user-001',
     name: 'John Smith',
     username: '@jsmith',
-    location: "21.300127557914898, -157.81483315187523",
+    location: [21.300127557914898, -157.81483315187523],
     email: 'john.smith@example.com',
     imagePath: 'assets/images/user-001.jpg',
     initials: 'JS'),
@@ -34,28 +44,28 @@ UserData(
     id: 'user-002',
     name: 'Mary Johnson',
     username: '@maryj',
-    location: "21.300127557914898, -157.81483315187523",
+    location: [21.300127557914898, -157.8148331518752555],
     email: 'mary.johnson@example.com',
     initials: 'MJ'),
 UserData(
     id: 'user-003',
     name: 'David Brown',
     username: '@dbrown',
-    location: "21.300127557914898, -157.81483315187523",
+    location: [21.300127557914898, -157.81483315155523],
     email: 'david.brown@example.com',
     initials: 'DB'),
 UserData(
     id: 'user-004',
     name: 'Sarah Williams',
     username: '@sarahw',
-    location: "21.300127557914898, -157.81483315187523",
+    location: [21.300127557914898, -157.8148331554487523],
     email: 'sarah.williams@example.com',
     initials: 'SW'),
 UserData(
     id: 'user-005',
     name: 'Christoph Haring',
     username: '@CHaring',
-    location: "21.300127557914898, -157.81483315187523",
+    location: [21.300127557914898, -157.6000560453],
     email: 'CHaring@hawaii.edu',
     imagePath: 'assets/images/user/freeworklogoearthgrinsgesicht.jpg',
     initials: 'CH')
@@ -66,9 +76,54 @@ UserData(
     return _users.firstWhere((userData) => userData.id == userID);
   }
 
+  bool areUserNames(List<String> userNames) {
+    List<String> allUserNames =
+        _users.map((userData) => userData.username).toList();
+    return userNames.every((userName) => allUserNames.contains(userName));
+  }
+
+
+  String getUserID(String emailOrUsername) {
+    return (emailOrUsername.startsWith('@'))
+        ? _users
+            .firstWhere((userData) => userData.username == emailOrUsername)
+            .id
+        : _users.firstWhere((userData) => userData.email == emailOrUsername).id;
+  }
+
+
+  bool isUserEmail(String email) {
+    List<String> emails = _users.map((userData) => userData.email).toList();
+    return emails.contains(email);
+  }
+
   List<UserData> getUsers(List<String> userIDs) {
     return _users.where((userData) => userIDs.contains(userData.id)).toList();
   }
+
+  List<String> getAllEmails() {
+    return _users.map((userData) => userData.email).toList();
+  }
+
+  	
+  List<dynamic> getUserLocation(String userID) {
+  final userData = _users.firstWhere((userData) => userData.id == userID);
+  return userData.location;
+}
+
+}
+
+
+
+final userDBProvider = Provider<UserDB>((ref){
+  return UserDB(ref);
+});
+
+final currentUserIDProvider = StateProvider<String>((ref) {
+  return 'user-001';
+});
+
+
 
 
 /* 
@@ -85,10 +140,11 @@ UserData(
   }
  */
 
-}
 
-/// The singleton instance providing access to all user data for clients.
+
+/* /// The singleton instance providing access to all user data for clients.
 UserDB userDB = UserDB();
 
 /// The currently logged in user.
 String currentUserID = 'user-005';
+ */

@@ -11,7 +11,7 @@ import 'settings/settings_view.dart';
 
 
 import 'package:freework/src/pages/home/home.dart';
-import 'package:freework/src/pages/login/login_video.dart';
+import 'package:freework/src/pages/login/login_view_video.dart';
 import 'package:freework/src/pages/map/main_map.dart';
 import 'package:freework/src/pages/start/start.dart';
 
@@ -70,7 +70,7 @@ class MyApp extends StatelessWidget {
                   case StartPage.routeName:
                     	return const StartPage();
                   default:
-                    return const StartPage();
+                    return const SigninView();
                 }
               },
             );
