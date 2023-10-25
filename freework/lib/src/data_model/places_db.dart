@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
-import 'area_db.dart';
+//import 'area_db.dart';
 import 'user_db.dart';
 
 
@@ -11,22 +11,25 @@ class PlacesData {
       {required this.id,
       required this.name,
       required this.description,
+      List<String> location = const [],
       required this.placeType,
       required this.imagePath,
-      required this.areaID,
+      String? areaID,
       required this.lastUpdate,
       this.ownerID,
       List<String>? editorIDs,
       List<String>? visitorIDs})
       : editorIDs = editorIDs ?? [],
+        location = location ?? [],
         visitorIDs = visitorIDs ?? [];
 
   String id;
   String name;
-  String placeType;
   String description;
+  List<String> location;
+  String placeType;
   String imagePath;
-  String areaID;
+  String? areaID;
   String lastUpdate;
   String? ownerID;
   List<String> editorIDs;
@@ -35,8 +38,7 @@ class PlacesData {
 
   @override
   String toString() {
-    return '<GardenData id: $id, name: $name, description: $description, imagePath: $imagePath, ownerID: $ownerID, chapterID: $areaID, lastUpdate: $lastUpdate, editorIDs: ${editorIDs
-    
+    return '<GardenData id: $id, name: $name, description: $description, imagePath: $imagePath, ownerID: $ownerID, location ccordinates: $location, lastUpdate: $lastUpdate, editorIDs: ${editorIDs
         .toString()}, viewerIDs: ${visitorIDs.toString()}>';
   }
 
@@ -54,7 +56,7 @@ class PlacesDB {
         description: '19 beds, 162 plantings (2022)',
         placeType: "public",
         imagePath: 'assets/images/diamond.png',
-        areaID: 'area-001',
+        location: ["21.3003692300479", "-157.81494475453513"],
         lastUpdate: '11/15/22',
         ownerID: 'user-002',
         editorIDs: ['user-001'],
@@ -65,7 +67,7 @@ class PlacesDB {
         description: '17 beds, 149 plantings (2022)',
         placeType: "community",
         imagePath: 'assets/images/diamond.png',
-        areaID: 'area-001',
+        location: ["21.3003692300479", "-157.81494475453513"],       
         lastUpdate: '10/10/22',
         editorIDs: ['user-002'],
         visitorIDs: ['user-001', 'user-005']),
@@ -75,7 +77,7 @@ class PlacesDB {
         description: '1 bed, 5 plantings (2022)',
         placeType: "public",
         imagePath: 'assets/images/diamond.png',
-        areaID: 'area-002',
+        location: ["2211 ALA WAI BLVD", "96815 Honolulu"],
         lastUpdate: '8/10/22',
         editorIDs: ['user-004'],
         visitorIDs: ['user-005'],
@@ -86,22 +88,24 @@ class PlacesDB {
   void addPlace({
       required String name,
       required String description,
+      required List<String> location,
       required String placeType,
       required String imageFileName,
-      required String areaID,
+      //required String areaID,
       required String ownerID,
       required List<String> editorIDs,
       required List<String> visitorIDs}) {
       String id = 'places-${(_places.length + 1).toString().padLeft(3, '0')}';
       String imagePath = 'assets/images/$imageFileName';
       String lastUpdate = DateFormat.yMd().format(DateTime.now());
+
       PlacesData data = PlacesData(
         id: id,
         name: name,
         description: description,
+        location: location,
         placeType: placeType,
         imagePath: imagePath,
-        areaID: areaID,
         lastUpdate: lastUpdate,
         ownerID: ownerID,
         editorIDs: editorIDs,
@@ -115,7 +119,7 @@ class PlacesDB {
       required String description,
       required String placeType,
       required String imagePath,
-      required String areaID,
+      required List<String> location,
       required String ownerID,
       required List<String> visitorIDs,
       required List<String> editorIDs,
@@ -130,7 +134,7 @@ class PlacesDB {
         description: description,
         placeType: placeType,
         imagePath: imagePath,
-        areaID: areaID,
+        location: location,
         lastUpdate: lastUpdate,
         ownerID: ownerID,
         editorIDs: editorIDs,
@@ -196,6 +200,11 @@ UserData? getOwner(String placeID) {
     print("This is a public or community place.");
     return null; // Return null or handle accordingly
   }
+}
+
+List<String> getLocation(String placeID) {
+  PlacesData data = getPlace(placeID);
+  return data.location;
 }
 
   List<UserData> getEditors(String placeID) {
