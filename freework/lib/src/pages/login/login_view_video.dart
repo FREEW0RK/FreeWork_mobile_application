@@ -146,7 +146,7 @@ class _SigninViewState extends State<SigninView> {
                       if (userDB.isUserEmail(email)) {
                         String userID = userDB.getUserID(email);
                         ref.read(currentUserIDProvider.notifier).state = userID;
-                        Navigator.pushReplacementNamed(context, '/home');
+                        Navigator.pushReplacementNamed(context, '/poll');
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                           content: Text(
