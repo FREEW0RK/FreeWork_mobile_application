@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:freework/src/pages/places/places_view.dart';
 import '../data_model/user_db.dart';
 import '../pages/help/help_view.dart';
 import '../pages/home/home_view.dart';
@@ -40,14 +41,14 @@ class DrawerView extends ConsumerWidget {
               Navigator.pushReplacementNamed(context, HomeView.routeName);
             },
           ),
-   /*       ListTile(
-            leading: const Icon(Icons.yard_outlined),
-            title: const Text('Gardens'),
+          ListTile(
+            leading: const Icon(Icons.beach_access_sharp),
+            title: const Text('Nice FW Spot'),
             onTap: () {
-              Navigator.pushReplacementNamed(context, GardenView.routeName);
+              Navigator.pushReplacementNamed(context, PlacesView.routeName);
             },
            ),
-          ListTile(
+         /* ListTile(
             leading: const Icon(Icons.person),
             title: const Text('Members'),
             onTap: () {

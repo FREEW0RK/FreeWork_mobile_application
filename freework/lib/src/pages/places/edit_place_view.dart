@@ -62,7 +62,7 @@ class EditPlaceView extends ConsumerWidget {
       // Valid so update the garden data.
       String name = _nameFieldKey.currentState?.value;
       String description = _descriptionFieldKey.currentState?.value;
-      List<String> location = _locationFieldKey.currentState?.value;
+      String location = _locationFieldKey.currentState?.value;
       String placeType= _placeTypeFieldKey.currentState?.value;
 
 

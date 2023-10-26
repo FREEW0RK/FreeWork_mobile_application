@@ -12,7 +12,8 @@ import 'package:flutter/services.dart'; // For rootBundle
 import 'dart:convert'; // For jsonDecode
 
 
-
+//GRADLE DEBUG COMMAND
+////https://stackoverflow.com/questions/64734646/failed-to-delete-some-children-this-might-happen-because-a-process-has-files-op
 
 void main() async {
   // Find and load the Appainter-generated theme

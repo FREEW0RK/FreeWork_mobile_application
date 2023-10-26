@@ -21,7 +21,7 @@ class PlacesSummaryView extends ConsumerWidget {
     PlacesData placesData = placesDB.getPlace(placeID);
     String title = placesData.name;
     String subtitle = placesData.description;
-    List<String> location = placesData.location;
+    String location = placesData.location;
     String lastUpdate = placesData.lastUpdate;
     String imagePath = placesData.imagePath;
     //String chapterName = chapterDB.getChapterFromGardenID(gardenID).name;

@@ -10,8 +10,9 @@ class PlacesData {
   PlacesData(
       {required this.id,
       required this.name,
-      required this.description,
-      List<String> location = const [],
+      required this.description,      
+      required this.location,
+      //List<String> location = const [],
       required this.placeType,
       required this.imagePath,
       String? areaID,
@@ -20,13 +21,13 @@ class PlacesData {
       List<String>? editorIDs,
       List<String>? visitorIDs})
       : editorIDs = editorIDs ?? [],
-        location = location ?? [],
+        //location = location ?? [],
         visitorIDs = visitorIDs ?? [];
 
   String id;
   String name;
   String description;
-  List<String> location;
+  String location;
   String placeType;
   String imagePath;
   String? areaID;
@@ -38,7 +39,7 @@ class PlacesData {
 
   @override
   String toString() {
-    return '<GardenData id: $id, name: $name, description: $description, imagePath: $imagePath, ownerID: $ownerID, location ccordinates: $location, lastUpdate: $lastUpdate, editorIDs: ${editorIDs
+    return '<PlaceData id: $id, name: $name, description: $description, imagePath: $imagePath, ownerID: $ownerID, location ccordinates: $location, lastUpdate: $lastUpdate, editorIDs: ${editorIDs
         .toString()}, viewerIDs: ${visitorIDs.toString()}>';
   }
 
@@ -52,32 +53,32 @@ class PlacesDB {
   final List<PlacesData> _places = [
     PlacesData(
         id: 'places-001',
-        name: 'Alderwood Hill',
-        description: '19 beds, 162 plantings (2022)',
+        name: 'University of Hawaii at Manoa (UHM)',
+        description: 'Outdoor Workplaces in front of Natural Science Building with shed and electricity',
         placeType: "public",
         imagePath: 'assets/images/diamond.png',
-        location: ["21.3003692300479", "-157.81494475453513"],
+        location: "21.3003692300479 -157.81494475453513",
         lastUpdate: '11/15/22',
         ownerID: 'user-002',
         editorIDs: ['user-001'],
         visitorIDs: ['user-003', 'user-005']),
     PlacesData(
         id: 'places-002',
-        name: 'Kale is for Kids',
-        description: '17 beds, 149 plantings (2022)',
+        name: 'University of Hawaii at Manoa (UHM)',
+        description: 'Under Tree in front Campus Center',
         placeType: "community",
         imagePath: 'assets/images/diamond.png',
-        location: ["21.3003692300479", "-157.81494475453513"],       
+        location: "21.3003692300479,-157.81494475453513",       
         lastUpdate: '10/10/22',
         editorIDs: ['user-002'],
         visitorIDs: ['user-001', 'user-005']),
     PlacesData(
         id: 'places-003',
-        name: 'Kaimake Loop',
-        description: '1 bed, 5 plantings (2022)',
+        name: 'University of Hawaii at Manoa (UHM)',
+        description: 'In front of SOEST Building with shed',
         placeType: "public",
         imagePath: 'assets/images/diamond.png',
-        location: ["2211 ALA WAI BLVD", "96815 Honolulu"],
+        location: "2211 ALA WAI BLVD 96815 Honolulu",
         lastUpdate: '8/10/22',
         editorIDs: ['user-004'],
         visitorIDs: ['user-005'],
@@ -88,13 +89,15 @@ class PlacesDB {
   void addPlace({
       required String name,
       required String description,
-      required List<String> location,
+      required String location,
       required String placeType,
       required String imageFileName,
       //required String areaID,
       required String ownerID,
       required List<String> editorIDs,
       required List<String> visitorIDs}) {
+
+        
       String id = 'places-${(_places.length + 1).toString().padLeft(3, '0')}';
       String imagePath = 'assets/images/$imageFileName';
       String lastUpdate = DateFormat.yMd().format(DateTime.now());
@@ -119,7 +122,7 @@ class PlacesDB {
       required String description,
       required String placeType,
       required String imagePath,
-      required List<String> location,
+      required String location,
       required String ownerID,
       required List<String> visitorIDs,
       required List<String> editorIDs,
@@ -202,7 +205,7 @@ UserData? getOwner(String placeID) {
   }
 }
 
-List<String> getLocation(String placeID) {
+String getLocation(String placeID) {
   PlacesData data = getPlace(placeID);
   return data.location;
 }

@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'pages/settings/settings_controller.dart';
+import 'pages/settings/settings_view.dart';
+
+import 'package:freework/src/pages/places/places_view.dart';
 import 'package:freework/src/pages/poll/poll.dart';
 
 
@@ -6,15 +11,18 @@ import 'package:freework/src/pages/poll/poll.dart';
 //import 'package:flutter_localizations/flutter_localizations.dart';
 import 'pages/sample_feature/sample_item_details_view.dart';
 import 'pages/sample_feature/sample_item_list_view.dart';
-import 'pages/settings/settings_controller.dart';
-import 'pages/settings/settings_view.dart';
 
 
-import 'package:freework/src/pages/home/home.dart';
+import 'package:freework/src/pages/home/home_view.dart';
 import 'package:freework/src/pages/login/login_view_video.dart';
+import 'package:freework/src/pages/signup/signup_view.dart';
 import 'package:freework/src/pages/map/main_map.dart';
 import 'package:freework/src/pages/start/start.dart';
 
+
+import 'package:freework/src/pages/places/places_view.dart';
+import 'package:freework/src/pages/places/add_places_view.dart';
+import 'package:freework/src/pages/places/edit_place_view.dart';
 
 
 
@@ -63,14 +71,25 @@ class MyApp extends StatelessWidget {
                      return const MainMap();    
                   case PollingPage.routeName:
                       return const PollingPage();
+          
+                  case SignupView.routeName:
+                    return const SignupView();     
+             
+                  case PlacesView.routeName:
+                    return const PlacesView();
+                 case AddPlacesView.routeName:
+                    return AddPlacesView();
+                  case EditPlaceView.routeName:
+                    return EditPlaceView();
                   case SigninView.routeName:
-                    return const SigninView();   
+                    return const SigninView();
+
                   case HomeView.routeName:
                     	return const HomeView();
                   case StartPage.routeName:
                     	return const StartPage();
                   default:
-                    return const StartPage();
+                    return const HomeView();
                 }
               },
             );
@@ -81,6 +100,11 @@ class MyApp extends StatelessWidget {
   }
 }
 
+
+final settingsControllerProvider = Provider((ref) {
+  final settingsService = ref.read(settingsServiceProvider);
+  return SettingsController(settingsService);
+});
 
  /*   // Providing a restorationScopeId allows the Navigator built by the
           // MaterialApp to restore the navigation stack when a user leaves and

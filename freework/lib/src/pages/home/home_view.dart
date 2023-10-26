@@ -4,13 +4,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../components/drawer_view.dart';
 import '../../components/help_button.dart';
 import '../../data_model/places_db.dart';
-//import '../../data_model/news_db.dart';
 import '../../data_model/user_db.dart';
+import 'bodies/places_body_view.dart';
 
 
-/* import 'bodies/chapter_body_view.dart';
-import 'bodies/gardens_body_view.dart';
-import 'bodies/news_body_view.dart'; */
+//import '../../data_model/news_db.dart';
+//import 'bodies/chapter_body_view.dart';
+//import 'bodies/news_body_view.dart';
+
 
 /// Top-level Layout for all of the "Home" related subpages.
 class HomeView extends ConsumerStatefulWidget {
@@ -39,37 +40,49 @@ class _HomeViewState extends ConsumerState<HomeView> {
   Widget build(BuildContext context) {
     final String currentUserID = ref.watch(currentUserIDProvider);
     final PlacesDB placesDB = ref.watch(placesDBProvider);
-    
-    /*final NewsDB newsDB = ref.watch(newsDBProvider);
-    String numDiscussions = 0.toString();
-    String numNews =
-        newsDB.getAssociatedNewsIDs(currentUserID).length.toString();
-    */
-    
-    String numGardens = placesDB
+    //final NewsDB newsDB = ref.watch(newsDBProvider);
+    //String numNews =
+      //  newsDB.getAssociatedNewsIDs(currentUserID).length.toString();
+    String numPlaces = placesDB
         .getAssociatedPlaceIDs(userID: currentUserID)
         .length
         .toString();
+    //String numDiscussions = 0.toString();
+
+
 
     // This data structure will eventually become stateful and thus will
     // need to be moved into the state widget.
-   /*  final Map pages = {
+    final Map<int, Map<String, dynamic>> pages = {
       0: {
+        'title': const Text('Nice Spots'),
+        'body': const PlacesBodyView(),
+        'navItem': BottomNavigationBarItem(
+          label: 'My Nice Spots ($numPlaces)',
+          icon: const Icon(Icons.beach_access_sharp),
+        ),
+        
+      },
+    };
+/* 
+    final Map pages = {
+      /* 0: {
         'title': const Text('News'),
         'body': const NewsBodyView(),
         'navItem': BottomNavigationBarItem(
           label: 'My News ($numNews)',
           icon: const Icon(Icons.newspaper),
         ),
-      },
+      },*/
       1: {
-        'title': const Text('Gardens'),
-        'body': const GardensBodyView(),
+        'title': const Text('Nice Spots'),
+        'body': const PlacesBodyView(),
         'navItem': BottomNavigationBarItem(
-          label: 'My Gardens ($numGardens)',
-          icon: const Icon(Icons.yard_outlined),
+          label: 'My Nice Spots ($numPlaces)',
+          icon: const Icon(Icons.location_pin),
         ),
       },
+      /*
       2: {
         'title': const Text('Chapter'),
         'body': const ChapterBodyView(),
@@ -77,25 +90,29 @@ class _HomeViewState extends ConsumerState<HomeView> {
           label: 'My Discussions ($numDiscussions)',
           icon: const Icon(Icons.chat),
         ),
-      },
-    }; */
+      },*/
+    }; 
+ */
+
+
+
     return Scaffold(
       drawer: const DrawerView(),
       appBar: AppBar(
         title: const Text('Home'),
         actions: const [HelpButton(routeName: HomeView.routeName)],
       ),
- /*     body: pages[_selectedIndex]['body'],
-       bottomNavigationBar: BottomNavigationBar(
+      body: pages[_selectedIndex]?['body'],
+      bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed, // needed when more than 3 items
         items: [
-          pages[0]['navItem'],
-          pages[1]['navItem'],
-          pages[2]['navItem'],
+          pages[0]?['navItem'],
+          pages[0]?['navItem'],
+          pages[0]?['navItem'],
         ],
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
-      ), */
+      ),
     );
   }
 }

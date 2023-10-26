@@ -38,7 +38,7 @@ class UserDB {
     username: '@jsmith',
     location: [21.300127557914898, -157.81483315187523],
     email: 'john.smith@example.com',
-    imagePath: 'assets/images/user-001.jpg',
+    imagePath: 'assets/images/freeworklogoearthgrinsgesicht.jpg',
     initials: 'JS'),
 UserData(
     id: 'user-002',
@@ -67,7 +67,7 @@ UserData(
     username: '@CHaring',
     location: [21.300127557914898, -157.6000560453],
     email: 'CHaring@hawaii.edu',
-    imagePath: 'assets/images/user/freeworklogoearthgrinsgesicht.jpg',
+    imagePath: 'assets/images/freeworklogoearthgrinsgesicht.jpg',
     initials: 'CH')
 
   ];
@@ -120,7 +120,7 @@ final userDBProvider = Provider<UserDB>((ref){
 });
 
 final currentUserIDProvider = StateProvider<String>((ref) {
-  return 'user-001';
+  return 'user-005';
 });
 
 

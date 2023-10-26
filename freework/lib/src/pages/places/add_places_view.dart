@@ -8,6 +8,8 @@ import 'package:freework/src/pages/places/form-fields/submit_button.dart';
 import 'package:freework/src/pages/places/form-fields/editors_field.dart';
 import 'package:freework/src/pages/places/form-fields/photo_field.dart';
 import 'package:freework/src/pages/places/form-fields/reset_button.dart';
+import 'package:freework/src/pages/places/form-fields/location_field.dart';
+import 'package:freework/src/pages/places/form-fields/placetype_dropdown_field.dart';
 
 
 import '../../components/help_button.dart';
@@ -31,7 +33,6 @@ class AddPlacesView extends ConsumerWidget {
   final _descriptionFieldKey = GlobalKey<FormBuilderFieldState>();
   final _locationFieldKey = GlobalKey<FormBuilderFieldState>();
   final _placeTypeFieldKey = GlobalKey<FormBuilderFieldState>();
-
   //final _chapterFieldKey = GlobalKey<FormBuilderFieldState>();
   final _photoFieldKey = GlobalKey<FormBuilderFieldState>();
   final _editorsFieldKey = GlobalKey<FormBuilderFieldState>();
@@ -52,7 +53,7 @@ class AddPlacesView extends ConsumerWidget {
       // Since validation passed, we can safely access the values.
       String name = _nameFieldKey.currentState?.value;
       String description = _descriptionFieldKey.currentState?.value;
-      List<String> location = _locationFieldKey.currentState?.value;
+      String location = _locationFieldKey.currentState?.value;
       String placeType = _placeTypeFieldKey.currentState?.value;
       String imageFileName = _photoFieldKey.currentState?.value;
       String editorsString = _editorsFieldKey.currentState?.value ?? '';
@@ -98,6 +99,8 @@ class AddPlacesView extends ConsumerWidget {
                     children: [
                       PlaceNameField(fieldKey: _nameFieldKey),
                       DescriptionField(fieldKey: _descriptionFieldKey),
+                      LocationField(fieldKey: _locationFieldKey),
+                      PlaceTypeDropdownField(fieldKey: _placeTypeFieldKey),
                      /*  ChapterDropdownField(
                           fieldKey: _chapterFieldKey,
                           chapterNames: chapterNames), */
@@ -119,3 +122,7 @@ class AddPlacesView extends ConsumerWidget {
         ));
   }
 }
+
+final placeTypesProvider = Provider<List<String>>((ref) {
+  return ["Public", "Community", "AirNiceFWSpot","Remote", "Super Remote"];
+});
