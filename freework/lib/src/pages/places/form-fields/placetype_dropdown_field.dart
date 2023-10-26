@@ -11,15 +11,16 @@ import 'field_padding.dart';
 
 
 class PlaceTypeDropdownField extends ConsumerWidget {
-  const PlaceTypeDropdownField({
-    Key? key,
+  const PlaceTypeDropdownField({super.key,
     required this.fieldKey,
-  });
+    this.currPlacetype});
 
  final GlobalKey<FormBuilderFieldState<FormBuilderField<dynamic>, dynamic>>
       fieldKey;
 
   @override
+  final String? currPlacetype;
+
   Widget build(BuildContext context, WidgetRef ref) {
     final List<String> placeTypes = ref.watch(placeTypesProvider);
 

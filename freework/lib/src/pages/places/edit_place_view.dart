@@ -8,6 +8,8 @@ import 'package:freework/src/pages/places/form-fields/visitors_field.dart';
 import 'package:freework/src/pages/places/form-fields/submit_button.dart';
 import 'package:freework/src/pages/places/form-fields/photo_field.dart';
 import 'package:freework/src/pages/places/form-fields/reset_button.dart';
+import 'package:freework/src/pages/places/form-fields/location_field.dart';
+import 'package:freework/src/pages/places/form-fields/placetype_dropdown_field.dart';
 
 
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -63,7 +65,7 @@ class EditPlaceView extends ConsumerWidget {
       String name = _nameFieldKey.currentState?.value;
       String description = _descriptionFieldKey.currentState?.value;
       String location = _locationFieldKey.currentState?.value;
-      String placeType= _placeTypeFieldKey.currentState?.value;
+      String placeType = _placeTypeFieldKey.currentState?.value;
 
 
     /*   String chapterID =
@@ -112,6 +114,13 @@ class EditPlaceView extends ConsumerWidget {
                       DescriptionField(
                           fieldKey: _descriptionFieldKey,
                           currDescription: placesData.description),
+                      LocationField(
+                          fieldKey: _locationFieldKey,
+                          currLocation: placesData.location),
+                          
+                      PlaceTypeDropdownField(
+                          fieldKey: _placeTypeFieldKey,
+                          currPlacetype: placesData.placeType),       
                       /* ChapterDropdownField(
                           fieldKey: _chapterFieldKey,
                           chapterNames: chapterNames,

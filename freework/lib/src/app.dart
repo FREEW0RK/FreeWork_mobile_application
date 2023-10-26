@@ -27,42 +27,34 @@ import 'package:freework/src/pages/places/edit_place_view.dart';
 
 
 /// The Widget that configures your application.
-class MyApp extends StatelessWidget {
-  MyApp({super.key, required this.settingsController, required this.theme});
-
-  final SettingsController settingsController;
-  final ThemeData theme;
-  final theme2 =
-      ThemeData(colorSchemeSeed: const Color.fromARGB(255, 36, 195, 174), useMaterial3: true);
-
+/// The Widget that configures your application.
+class MyApp extends ConsumerWidget {
+  const MyApp({
+    super.key,
+  });
 
   @override
-  Widget build(BuildContext context) {
-    // Glue the SettingsController to the MaterialApp.
-    //
-    // The ListenableBuilder Widget listens to the SettingsController for changes.
-    // Whenever the user updates their settings, the MaterialApp is rebuilt.
-    return ListenableBuilder(
-      listenable: settingsController,
-      builder: (BuildContext context, Widget? child) {
-        return MaterialApp(
-       
-          // Define a light and dark color theme. Then, read the user's
-          // preferred ThemeMode (light, dark, or system default) from the
-          // SettingsController to display the correct theme.
-          theme: ThemeData(),
-          darkTheme: ThemeData.dark(),
-          themeMode: settingsController.themeMode,
+  Widget build(BuildContext context, WidgetRef ref) {
+    final currentTheme = ref.watch(currentThemeProvider);
+    final systemTheme = ref.watch(systemThemeDataProvider);
 
-          // Define a function to handle named routes in order to support
-          // Flutter web url navigation and deep linking.
-          onGenerateRoute: (RouteSettings routeSettings) {
-            return MaterialPageRoute<void>(
-              settings: routeSettings,
-              builder: (BuildContext context) {
-                switch (routeSettings.name) {
+    return MaterialApp(
+      // Define a light and dark color theme. Then, read the user's
+      // preferred ThemeMode (light, dark, or system default) from the
+      // SettingsController to display the correct theme.
+      theme: systemTheme.value,
+      themeMode: currentTheme,
+      darkTheme: ThemeData.dark(),
+
+      // Define a function to handle named routes in order to support
+      // Flutter web url navigation and deep linking.
+      onGenerateRoute: (RouteSettings routeSettings) {
+        return MaterialPageRoute<void>(
+          settings: routeSettings,
+          builder: (BuildContext context) {
+            switch (routeSettings.name) {
                   case SettingsView.routeName:
-                    return SettingsView(controller: settingsController);
+                    return const SettingsView();
                   case SampleItemDetailsView.routeName:
                     return const SampleItemDetailsView();
                   case SampleItemListView.routeName:
@@ -71,10 +63,8 @@ class MyApp extends StatelessWidget {
                      return const MainMap();    
                   case PollingPage.routeName:
                       return const PollingPage();
-          
                   case SignupView.routeName:
                     return const SignupView();     
-             
                   case PlacesView.routeName:
                     return const PlacesView();
                  case AddPlacesView.routeName:
@@ -95,16 +85,11 @@ class MyApp extends StatelessWidget {
             );
           },
         );
-      },
-    );
+
   }
 }
 
 
-final settingsControllerProvider = Provider((ref) {
-  final settingsService = ref.read(settingsServiceProvider);
-  return SettingsController(settingsService);
-});
 
  /*   // Providing a restorationScopeId allows the Navigator built by the
           // MaterialApp to restore the navigation stack when a user leaves and
