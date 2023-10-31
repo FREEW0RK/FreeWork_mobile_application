@@ -115,13 +115,6 @@ UserData(
 
 
 
-final userDBProvider = Provider<UserDB>((ref){
-  return UserDB(ref);
-});
-
-final currentUserIDProvider = StateProvider<String>((ref) {
-  return 'user-005';
-});
 
 
 

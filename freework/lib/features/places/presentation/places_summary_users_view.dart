@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../domain/places_db.dart';
 import '../data/places_provider.dart';
 
-import '../../components/user_labeled_avatar.dart';
+import '../../user/presentation/user_labeled_avatar.dart';
 
 /// Provides a row of User avatars associated with a gardenID.
 class PlacesSummaryUsersView extends ConsumerWidget {

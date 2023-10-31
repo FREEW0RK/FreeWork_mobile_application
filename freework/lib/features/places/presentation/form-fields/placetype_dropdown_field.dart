@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-import 'package:freework/features/data_model/user_db.dart';
+import 'package:freework/features/user/domain/user_db.dart';
 
 import 'package:freework/features/places/presentation/add_places_view.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

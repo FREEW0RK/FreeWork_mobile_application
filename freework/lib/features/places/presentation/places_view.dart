@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../components/drawer_view.dart';
+import '../../common/drawer_view.dart';
 import 'places_summary_view.dart';
 import '../../help/presentation/help_button.dart';
 import '../domain/places_db.dart';
 import '../data/places_provider.dart';
 
+import 'package:freework/features/user/data/user_providers.dart';
 
-import '../../data_model/user_db.dart';
+import '../../user/domain/user_db.dart';
 import 'add_places_view.dart';
 
 const pageSpecification = '''

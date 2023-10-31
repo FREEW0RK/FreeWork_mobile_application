@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 
 /// The data associated with users.
 class PropsData {
@@ -25,6 +27,8 @@ class PropsData {
 
 /// Provides access to and operations on all defined users.
 class PropsDB {
+  PropsDB(this.ref);
+  final ProviderRef<PropsDB> ref;
   final List<PropsData> _props = [
     PropsData(
         id: 'props-001',
@@ -92,4 +96,4 @@ class PropsDB {
 }
 
 /// The singleton instance providing access to all user data for clients.
-PropsDB propsDB = PropsDB();
+//PropsDB propsDB = PropsDB();

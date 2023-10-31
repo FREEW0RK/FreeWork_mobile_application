@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freework/features/places/presentation/places_view.dart';
-import '../data_model/user_db.dart';
+import '../user/domain/user_db.dart';
 import '../help/presentation/help_view.dart';
-import '../pages/home/home_view.dart';
-import '../pages/settings/presentation/settings_view.dart';
-import 'user_avatar.dart';
+import '../home/presentation/home_view.dart';
+import '../settings/presentation/settings_view.dart';
+import '../user/presentation/user_avatar.dart';
+import 'package:freework/features/user/data/user_providers.dart';
 
 /* import '../pages/chapters/chapters_view.dart';
 import '../pages/users/users_view.dart';

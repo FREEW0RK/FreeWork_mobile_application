@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../data_model/user_db.dart';
+import '../domain/user_db.dart';
+import 'package:freework/features/user/data/user_providers.dart';
 
 
 
@@ -25,3 +26,4 @@ class UserAvatar extends ConsumerWidget {
       );
   }
 }
+

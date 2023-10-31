@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../components/drawer_view.dart';
+import '../../common/drawer_view.dart';
 import '../../help/presentation/help_button.dart';
 import '../../places/domain/places_db.dart';
 import '../../places/data/places_provider.dart';
 
-import '../../data_model/user_db.dart';
+import '../../user/domain/user_db.dart';
 import 'bodies/places_body_view.dart';
+import 'package:freework/features/user/data/user_providers.dart';
 
 
 //import '../../data_model/news_db.dart';

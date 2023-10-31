@@ -20,8 +20,8 @@ import '../../help/presentation/help_button.dart';
 import '../domain/places_db.dart';
 import '../data/places_provider.dart';
 
-
-import '../../data_model/user_db.dart';
+import 'package:freework/features/user/data/user_providers.dart';
+import '../../user/domain/user_db.dart';
 import 'form-fields/utils.dart';
 import 'places_view.dart';
 

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'features/pages/settings/presentation/settings_controller.dart';
-import 'features/pages/settings/presentation/settings_view.dart';
+import 'features/settings/presentation/settings_controller.dart';
+import 'features/settings/presentation/settings_view.dart';
 
 import 'package:freework/features/places/presentation/places_view.dart';
-import 'package:freework/features/pages/poll/poll.dart';
+import 'package:freework/features/poll/presentation/poll.dart';
 
 
 //import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -13,11 +13,11 @@ import 'features/pages/sample_feature/sample_item_details_view.dart';
 import 'features/pages/sample_feature/sample_item_list_view.dart';
 
 
-import 'package:freework/features/pages/home/home_view.dart';
+import 'package:freework/features/home/presentation/home_view.dart';
 import 'package:freework/features/authentication/presentation/login_view_video.dart';
 import 'package:freework/features/authentication/presentation/signup_view.dart';
 import 'package:freework/features/map/presentation/main_map.dart';
-import 'package:freework/features/pages/start/start.dart';
+import 'package:freework/features/start/presentation/start.dart';
 
 
 import 'package:freework/features/places/presentation/places_view.dart';
@@ -53,32 +53,31 @@ class MyApp extends ConsumerWidget {
           settings: routeSettings,
           builder: (BuildContext context) {
             switch (routeSettings.name) {
-                  case SettingsView.routeName:
+                case SettingsView.routeName:
                     return const SettingsView();
-                  case SampleItemDetailsView.routeName:
+                case SampleItemDetailsView.routeName:
                     return const SampleItemDetailsView();
-                  case SampleItemListView.routeName:
-                    	return const SampleItemListView();
-                  case MainMap.routeName:
-                     return const MainMap();    
-                  case PollingPage.routeName:
-                      return const PollingPage();
-                  case SignupView.routeName:
+                case SampleItemListView.routeName:
+                    return const SampleItemListView();
+                case MainMap.routeName:
+                    return const MainMap();    
+                case PollingPage.routeName:
+                    return const PollingPage();
+                case SignupView.routeName:
                     return const SignupView();     
-                  case PlacesView.routeName:
+                case PlacesView.routeName:
                     return const PlacesView();
-                 case AddPlacesView.routeName:
+                case AddPlacesView.routeName:
                     return AddPlacesView();
-                  case EditPlaceView.routeName:
+                case EditPlaceView.routeName:
                     return EditPlaceView();
-                  case SigninView.routeName:
+                case SigninView.routeName:
                     return const SigninView();
-
-                  case HomeView.routeName:
-                    	return const HomeView();
-                  case StartPage.routeName:
-                    	return const StartPage();
-                  default:
+                case HomeView.routeName:
+                    return const HomeView();
+                case StartPage.routeName:
+                    return const StartPage();
+                default:
                     return const HomeView();
                 }
               },

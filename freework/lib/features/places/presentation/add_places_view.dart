@@ -19,8 +19,10 @@ import '../domain/places_db.dart';
 import '../data/places_provider.dart';
 
 
+import 'package:freework/features/user/data/user_providers.dart';
+import '../../user/domain/user_db.dart';
 
-import '../../data_model/user_db.dart';
+
 import 'form-fields/chapter_dropdown_field.dart';
 import 'form-fields/description_field.dart';
 import 'form-fields/place_name_field.dart';
