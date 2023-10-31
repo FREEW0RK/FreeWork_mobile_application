@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freework/features/pages/home/home_controller_copy.dart';
-import '../pages/home/home_view.dart';
+import '../../pages/home/home_view.dart';
 
 
 //import '../pages/chapters/chapters_view.dart';
@@ -79,6 +79,3 @@ The buttons at the bottom enable you to filter or sort the list of Chapters.
   }
 }
 
-final helpDBProvider = Provider<HelpDB>((ref) {
-  return HelpDB(ref);
-});

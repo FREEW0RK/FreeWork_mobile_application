@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'features/pages/settings/presentation/settings_controller.dart';
 import 'features/pages/settings/presentation/settings_view.dart';
 
-import 'package:freework/features/pages/places/presentation/places_view.dart';
+import 'package:freework/features/places/presentation/places_view.dart';
 import 'package:freework/features/pages/poll/poll.dart';
 
 
@@ -20,9 +20,9 @@ import 'package:freework/features/map/presentation/main_map.dart';
 import 'package:freework/features/pages/start/start.dart';
 
 
-import 'package:freework/features/pages/places/presentation/places_view.dart';
-import 'package:freework/features/pages/places/presentation/add_places_view.dart';
-import 'package:freework/features/pages/places/presentation/edit_place_view.dart';
+import 'package:freework/features/places/presentation/places_view.dart';
+import 'package:freework/features/places/presentation/add_places_view.dart';
+import 'package:freework/features/places/presentation/edit_place_view.dart';
 
 
 
@@ -79,7 +79,7 @@ class MyApp extends ConsumerWidget {
                   case StartPage.routeName:
                     	return const StartPage();
                   default:
-                    return const StartPage();
+                    return const HomeView();
                 }
               },
             );

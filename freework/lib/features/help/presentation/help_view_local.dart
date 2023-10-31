@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../data_model/help_db.dart';
+import '../domain/help_db.dart';
+import '../data/help_providers.dart';
 
 /// Displays the context-sensitive Help (i.e. the ? icon in the upper right corner).
 class HelpViewLocal extends ConsumerWidget {

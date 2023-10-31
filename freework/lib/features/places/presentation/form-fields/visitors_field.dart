@@ -1,33 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
-import '../../../../data_model/user_db.dart';
+import '../../../data_model/user_db.dart';
 import 'field_padding.dart';
 import 'utils.dart';
 
 /// A text field to input garden photo file name found in images subdirectory.
-class LocationField extends StatelessWidget {
-  const LocationField(
+class VisitorsField extends StatelessWidget {
+  const VisitorsField(
       {super.key,
       required this.fieldKey,
-      this.currLocation});
+      required this.userDB,
+      this.currViewers});
 
-  final String? currLocation;
+  final String? currViewers;
+  final UserDB userDB;
   final GlobalKey<FormBuilderFieldState<FormBuilderField<dynamic>, dynamic>>
       fieldKey;
 
   @override
   Widget build(BuildContext context) {
-    String fieldName = 'Location Coordinates';
+    String fieldName = 'Visitors';
     return FieldPadding(
       child: FormBuilderTextField(
         name: fieldName,
         key: fieldKey,
-        initialValue: currLocation,
+        initialValue: currViewers,
         decoration: InputDecoration(
           labelText: fieldName,
-          hintText: 'Maps Coordinates of your new Nice FW spot.',
+          hintText: 'An optional, comma separated list of usernames.',
         ),
+        validator: (val) {
+          if (val is String) {
+            return validateUserNamesString(userDB, val);
+          }
+          return null;
+        },
       ),
     );
   }

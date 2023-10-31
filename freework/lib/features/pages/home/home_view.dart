@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../components/drawer_view.dart';
-import '../../components/help_button.dart';
-import '../places/domain/places_db.dart';
-import '../places/data/places_provider.dart';
+import '../../help/presentation/help_button.dart';
+import '../../places/domain/places_db.dart';
+import '../../places/data/places_provider.dart';
 
 import '../../data_model/user_db.dart';
 import 'bodies/places_body_view.dart';

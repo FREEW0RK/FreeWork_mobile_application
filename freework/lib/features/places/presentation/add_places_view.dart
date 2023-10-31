@@ -4,15 +4,15 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 
-import 'package:freework/features/pages/places/presentation/form-fields/submit_button.dart';
-import 'package:freework/features/pages/places/presentation/form-fields/editors_field.dart';
-import 'package:freework/features/pages/places/presentation/form-fields/photo_field.dart';
-import 'package:freework/features/pages/places/presentation/form-fields/reset_button.dart';
-import 'package:freework/features/pages/places/presentation/form-fields/location_field.dart';
-import 'package:freework/features/pages/places/presentation/form-fields/placetype_dropdown_field.dart';
+import 'package:freework/features/places/presentation/form-fields/submit_button.dart';
+import 'package:freework/features/places/presentation/form-fields/editors_field.dart';
+import 'package:freework/features/places/presentation/form-fields/photo_field.dart';
+import 'package:freework/features/places/presentation/form-fields/reset_button.dart';
+import 'package:freework/features/places/presentation/form-fields/location_field.dart';
+import 'package:freework/features/places/presentation/form-fields/placetype_dropdown_field.dart';
 
 
-import '../../../components/help_button.dart';
+import '../../help/presentation/help_button.dart';
 //import '../../data_model/chapter_db.dart';
 
 import '../domain/places_db.dart';
@@ -20,7 +20,7 @@ import '../data/places_provider.dart';
 
 
 
-import '../../../data_model/user_db.dart';
+import '../../data_model/user_db.dart';
 import 'form-fields/chapter_dropdown_field.dart';
 import 'form-fields/description_field.dart';
 import 'form-fields/place_name_field.dart';

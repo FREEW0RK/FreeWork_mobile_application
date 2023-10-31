@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 //import 'area_db.dart';
-import '../../../data_model/user_db.dart';
+import '../../data_model/user_db.dart';
 
 
 
