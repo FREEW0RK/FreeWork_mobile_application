@@ -20,7 +20,7 @@ import '../../components/help_button.dart';
 import '../../data_model/places_db.dart';
 import '../../data_model/user_db.dart';
 import 'form-fields/utils.dart';
-import 'places_view.dart';
+import 'presentation/places_view.dart';
 
 /// Edit data for a specific garden.
 class EditPlaceView extends ConsumerWidget {

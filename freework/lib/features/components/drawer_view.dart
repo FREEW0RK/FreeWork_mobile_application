@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:freework/features/pages/places/places_view.dart';
+import 'package:freework/features/pages/places/presentation/places_view.dart';
 import '../data_model/user_db.dart';
 import '../pages/help/help_view.dart';
 import '../pages/home/home_view.dart';

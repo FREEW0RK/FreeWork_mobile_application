@@ -21,7 +21,7 @@ import 'form-fields/description_field.dart';
 import 'form-fields/place_name_field.dart';
 import 'form-fields/utils.dart';
 import 'form-fields/visitors_field.dart';
-import 'places_view.dart';
+import 'presentation/places_view.dart';
 
 /// Create a new Garden.
 class AddPlacesView extends ConsumerWidget {
