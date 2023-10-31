@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 //import '../data_model/chapter_db.dart';
-import '../data_model/places_db.dart';
-import '../pages/places/edit_place_view.dart';
+import '../domain/places_db.dart';
+import '../data/places_provider.dart';
+
+
+import 'edit_place_view.dart';
 import 'places_summary_users_view.dart';
 
 enum PlaceAction { edit, leave }

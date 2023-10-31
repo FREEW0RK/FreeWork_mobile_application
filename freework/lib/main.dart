@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'app.dart';
-import 'features/pages/settings/settings_controller.dart';
-import 'features/pages/settings/settings_service.dart';
+import 'features/pages/settings/presentation/settings_controller.dart';
+import 'features/pages/settings/presentation/settings_service.dart';
 
 import 'package:json_theme/json_theme.dart';
 import 'package:flutter/services.dart'; // For rootBundle

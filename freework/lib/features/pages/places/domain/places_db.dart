@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 //import 'area_db.dart';
-import 'user_db.dart';
+import '../../../data_model/user_db.dart';
 
 
 
@@ -223,9 +223,6 @@ String getLocation(String placeID) {
   }
 }
 
-final placesDBProvider = Provider<PlacesDB>((ref) {
-  return PlacesDB(ref);
-});
 
 /* 
 

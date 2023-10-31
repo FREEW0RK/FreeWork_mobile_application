@@ -4,7 +4,7 @@ import 'package:freework/features/pages/places/presentation/places_view.dart';
 import '../data_model/user_db.dart';
 import '../pages/help/help_view.dart';
 import '../pages/home/home_view.dart';
-import '../pages/settings/settings_view.dart';
+import '../pages/settings/presentation/settings_view.dart';
 import 'user_avatar.dart';
 
 /* import '../pages/chapters/chapters_view.dart';

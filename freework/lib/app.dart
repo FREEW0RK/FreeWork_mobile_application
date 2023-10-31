@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'features/pages/settings/settings_controller.dart';
-import 'features/pages/settings/settings_view.dart';
+import 'features/pages/settings/presentation/settings_controller.dart';
+import 'features/pages/settings/presentation/settings_view.dart';
 
 import 'package:freework/features/pages/places/presentation/places_view.dart';
 import 'package:freework/features/pages/poll/poll.dart';
@@ -21,8 +21,8 @@ import 'package:freework/features/pages/start/start.dart';
 
 
 import 'package:freework/features/pages/places/presentation/places_view.dart';
-import 'package:freework/features/pages/places/add_places_view.dart';
-import 'package:freework/features/pages/places/edit_place_view.dart';
+import 'package:freework/features/pages/places/presentation/add_places_view.dart';
+import 'package:freework/features/pages/places/presentation/edit_place_view.dart';
 
 
 
