@@ -4,12 +4,12 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 
-import 'package:freework/src/pages/places/form-fields/submit_button.dart';
-import 'package:freework/src/pages/places/form-fields/editors_field.dart';
-import 'package:freework/src/pages/places/form-fields/photo_field.dart';
-import 'package:freework/src/pages/places/form-fields/reset_button.dart';
-import 'package:freework/src/pages/places/form-fields/location_field.dart';
-import 'package:freework/src/pages/places/form-fields/placetype_dropdown_field.dart';
+import 'package:freework/features/pages/places/form-fields/submit_button.dart';
+import 'package:freework/features/pages/places/form-fields/editors_field.dart';
+import 'package:freework/features/pages/places/form-fields/photo_field.dart';
+import 'package:freework/features/pages/places/form-fields/reset_button.dart';
+import 'package:freework/features/pages/places/form-fields/location_field.dart';
+import 'package:freework/features/pages/places/form-fields/placetype_dropdown_field.dart';
 
 
 import '../../components/help_button.dart';

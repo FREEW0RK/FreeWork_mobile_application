@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:freework/src/pages/home/home_controller_copy.dart';
+import 'package:freework/features/pages/home/home_controller_copy.dart';
 import '../pages/home/home_view.dart';
 
 

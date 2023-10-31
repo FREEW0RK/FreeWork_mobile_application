@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-import 'package:freework/src/data_model/user_db.dart';
+import 'package:freework/features/data_model/user_db.dart';
 
-import 'package:freework/src/pages/places/add_places_view.dart';
+import 'package:freework/features/pages/places/add_places_view.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'field_padding.dart';
