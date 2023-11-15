@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 //import '../data_model/chapter_db.dart';
 import '../domain/places_db.dart';
-import '../data/places_provider.dart';
+import '../data/place_provider.dart';
 
 
 import 'edit_place_view.dart';

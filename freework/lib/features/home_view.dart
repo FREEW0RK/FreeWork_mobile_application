@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'common/drawer_view.dart';
 import 'help/presentation/help_button.dart';
 import 'places/domain/places_db.dart';
-import 'places/data/places_provider.dart';
+import 'places/data/place_provider.dart';
 
 import 'user/domain/user.dart';
 import 'home/presentation/bodies/places_body_view.dart';
@@ -42,11 +42,11 @@ class _HomeViewState extends ConsumerState<HomeView> {
   @override
   Widget build(BuildContext context) {
     final String currentUserID = ref.watch(currentUserIDProvider);
-    final PlacesDB placesDB = ref.watch(placesDBProvider);
+    final Places places = ref.watch(placesProvider);
     //final NewsDB newsDB = ref.watch(newsDBProvider);
     //String numNews =
       //  newsDB.getAssociatedNewsIDs(currentUserID).length.toString();
-    String numPlaces = placesDB
+    String numPlaces = places
         .getAssociatedPlaceIDs(userID: currentUserID)
         .length
         .toString();

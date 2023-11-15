@@ -17,7 +17,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../help/presentation/help_button.dart';
 //import '../../data_model/chapter_db.dart';
 import '../domain/places_db.dart';
-import '../data/places_provider.dart';
+import '../data/place_provider.dart';
 
 import 'package:freework/features/user/data/user_providers.dart';
 import '../../user/domain/user..dart';

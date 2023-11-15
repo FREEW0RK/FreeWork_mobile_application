@@ -3,28 +3,49 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 //import '../../chapter/data/chapter_providers.dart';
 //import '../../chapter/domain/chapter_db.dart';
-import '../../places/data/places_provider.dart';
+import '../../places/data/place_provider.dart';
 import '../../places/domain/places_db.dart';
 
 import '../data/user_providers.dart';
-import '../domain/user..dart';
+import '../domain/user.dart';
+import '../domain/user_collection.dart';
+
 import 'user_avatar.dart';
 
 // A Card that summarizes information about a User.
 class UserCardView extends ConsumerWidget {
-  const UserCardView({Key? key, required this.userID}) : super(key: key);
+  const UserCardView({Key? key, required this.user}) : super(key: key);
 
-  final String userID;
+  final String user;
+
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final UserDB userDB = ref.watch(userDBProvider);
-    final PlacesDB placesDB = ref.watch(placesDBProvider);
-    //final ChapterDB chapterDB = ref.watch(chapterDBProvider);
-    UserData data = userDB.getUser(userID);
-    List<String> placesNames = placesDB
-        .getAssociatedPlaceIDs(userID: userID)
-        .map((placeID) => placesDB.getPlace(placeID))
+    final AsyncValue<AllData> asyncAllData = ref.watch(allDataProvider);
+    return asyncAllData.when(
+        data: (allData) => _build(
+            context: context,
+            currentUserID: allData.currentUserID,
+            //chapters: allData.chapters,
+            places: allData.places),
+        loading: () => const FWLoading(),
+        error: (error, st) => FWError(error.toString(), st.toString()));
+  }
+/* 
+    final Places places = ref.watch(placesProvider);
+    final ChapterDB chapterDB = ref.watch(chapterDBProvider);
+    User data = user.getUser(userID); */
+
+  Widget _build(
+      {required BuildContext context,
+      required String currentUserID,
+      required List<Places> places,
+      //required List<Chapter> chapters}) {
+    PlacesCollection placesCollection = PlacesCollection(places);
+    //ChapterCollection chapterCollection = ChapterCollection(chapters);
+    List<String> placesNames = places
+        .getAssociatedPlaceIs(userID: userID)
+        .map((placeID) => places.getPlace(placeID))
         .map((placesData) => placesData.name)
         .toList();
     /* List<String> chapterNames = chapterDB

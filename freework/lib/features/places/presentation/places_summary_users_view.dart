@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../domain/places_db.dart';
-import '../data/places_provider.dart';
+import '../data/place_provider.dart';
 
 import '../../user/presentation/user_labeled_avatar.dart';
 

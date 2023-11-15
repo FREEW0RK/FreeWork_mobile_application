@@ -5,7 +5,7 @@ import '../../common/drawer_view.dart';
 import 'places_summary_view.dart';
 import '../../help/presentation/help_button.dart';
 import '../domain/places_db.dart';
-import '../data/places_provider.dart';
+import '../data/place_provider.dart';
 
 import 'package:freework/features/user/data/user_providers.dart';
 

@@ -210,16 +210,16 @@ String getLocation(String placeID) {
   return data.location;
 }
 
-  List<UserData> getEditors(String placeID) {
-    PlacesData data = getPlace(placeID);
-    UserDB userDB = ref.read(userDBProvider);
-    return userDB.getUsers(data.editorIDs);
-  }
+    List<UserData> getEditors(String placeID) {
+      PlacesData data = getPlace(placeID);
+      UserDB userDB = ref.read(userDBProvider);
+      return userDB.getUsers(data.editorIDs);
+    }
 
-  List<UserData> getViewers(String placeID) {
-    PlacesData data = getPlace(placeID);
-    UserDB userDB = ref.read(userDBProvider);
-    return userDB.getUsers(data.visitorIDs);
+    List<UserData> getViewers(String placeID) {
+      PlacesData data = getPlace(placeID);
+      UserDB userDB = ref.read(userDBProvider);
+      return userDB.getUsers(data.visitorIDs);
   }
 }
 

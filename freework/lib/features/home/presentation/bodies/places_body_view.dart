@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../places/presentation/places_summary_view.dart';
 import '../../../places/domain/places_db.dart';
-import '../../../places/data/places_provider.dart';
+import '../../../places/data/place_provider.dart';
 import 'package:freework/features/user/data/user_providers.dart';
 
 import '../../../user/domain/user.dart';

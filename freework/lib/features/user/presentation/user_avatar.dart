@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../domain/user..dart';
+import '../domain/user.dart';
 import 'package:freework/features/user/data/user_providers.dart';
 
 
@@ -8,8 +8,8 @@ import 'package:freework/features/user/data/user_providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../agc_error.dart';
-import '../../agc_loading.dart';
+import '../../fw_error.dart';
+import '../../fw_loading.dart';
 import '../../all_data_provider.dart';
 import '../domain/user.dart';
 import '../domain/user_collection.dart';
@@ -25,8 +25,8 @@ class UserAvatar extends ConsumerWidget {
     final AsyncValue<AllData> asyncAllData = ref.watch(allDataProvider);
     return asyncAllData.when(
         data: (allData) => _build(users: allData.users),
-        loading: () => const AGCLoading(),
-        error: (error, st) => AGCError(error.toString(), st.toString()));
+        loading: () => const FWLoading(),
+        error: (error, st) => FWError(error.toString(), st.toString()));
   }
 
   Widget _build({required List<User> users}) {
