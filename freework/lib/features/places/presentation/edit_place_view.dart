@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:freework/features/places/presentation/form-fields/chapter_dropdown_field.dart';
 import 'package:freework/features/places/presentation/form-fields/description_field.dart';
 import 'package:freework/features/places/presentation/form-fields/editors_field.dart';
 import 'package:freework/features/places/presentation/form-fields/place_name_field.dart';

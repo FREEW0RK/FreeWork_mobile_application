@@ -23,7 +23,6 @@ import 'package:freework/features/user/data/user_providers.dart';
 import '../../user/domain/user..dart';
 
 
-import 'form-fields/chapter_dropdown_field.dart';
 import 'form-fields/description_field.dart';
 import 'form-fields/place_name_field.dart';
 import 'form-fields/utils.dart';

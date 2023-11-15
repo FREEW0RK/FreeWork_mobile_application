@@ -3,7 +3,6 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 
 import '../../../user/domain/user..dart';
 import 'field_padding.dart';
-import 'utils.dart';
 
 /// A text field to input garden photo file name found in images subdirectory.
 class LocationField extends StatelessWidget {

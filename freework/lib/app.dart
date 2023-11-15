@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'features/settings/presentation/settings_controller.dart';
 import 'features/settings/presentation/settings_view.dart';
 
 import 'package:freework/features/places/presentation/places_view.dart';
@@ -13,14 +12,13 @@ import 'features/pages/sample_feature/sample_item_details_view.dart';
 import 'features/pages/sample_feature/sample_item_list_view.dart';
 
 
-import 'package:freework/features/home/presentation/home_view.dart';
+import 'package:freework/features/home_view.dart';
 import 'package:freework/features/authentication/presentation/login_view_video.dart';
 import 'package:freework/features/authentication/presentation/signup_view.dart';
 import 'package:freework/features/map/presentation/main_map.dart';
 import 'package:freework/features/start/presentation/start.dart';
 
 
-import 'package:freework/features/places/presentation/places_view.dart';
 import 'package:freework/features/places/presentation/add_places_view.dart';
 import 'package:freework/features/places/presentation/edit_place_view.dart';
 

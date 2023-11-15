@@ -8,13 +8,10 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
 import '../../user/domain/user.dart';
+import 'package:freework/features/user/data/user_providers.dart';
 
 
 // PROVIDER 
-
-
-// Define a Riverpod provider for the video controller.
-
 // Define a Riverpod provider for the video controller.
 final videoControllerProvider = Provider<VideoPlayerController>((ref) {
   final controller = VideoPlayerController.asset('assets/videos/1080p_places.mov');
@@ -30,18 +27,15 @@ final passwordControllerProvider = Provider((_) => TextEditingController());
 
 
 
-
 class SigninView extends ConsumerWidget {
   const SigninView({Key? key}) : super(key: key);
   static const routeName = '/sign_in';
   //final _formKey = GlobalKey<FormBuilderState>();
-
-
+  
 // NO CONTROLLER ---> RIVERPOD
 /*   @override
   State<SigninView> createState() => _SigninViewState();
 }
-
 class _SigninViewState extends State<SigninView> {
   late VideoPlayerController _controller;
   final _emailController = TextEditingController();
@@ -58,8 +52,9 @@ class _SigninViewState extends State<SigninView> {
         _controller.play();
         _controller.setLooping(true);
       });
-  }
- */
+  } */
+ 
+
   @override
   Widget build(BuildContext context, WidgetRef ref){ 
     // Read the video controller from the provider.
@@ -180,6 +175,16 @@ class _SigninViewState extends State<SigninView> {
     );
   }
 }
+
+
+
+
+
+
+
+
+
+
 /* 
   static const routeName = '/';
   final _formKey = GlobalKey<FormBuilderState>();
@@ -366,11 +371,12 @@ class _SigninViewState extends State<SigninView> {
         ],
       ),
     );
-  }
+  
+}
 
-/*   @override
+  @override
   void dispose() {
     super.dispose();
     _controller.dispose();
-  } */
-}
+  } 
+ */

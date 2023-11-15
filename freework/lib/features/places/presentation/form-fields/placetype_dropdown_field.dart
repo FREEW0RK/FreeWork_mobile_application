@@ -21,6 +21,7 @@ class PlaceTypeDropdownField extends ConsumerWidget {
   @override
   final String? currPlacetype;
 
+  @override
   Widget build(BuildContext context, WidgetRef ref) {
     final List<String> placeTypes = ref.watch(placeTypesProvider);
 

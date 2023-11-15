@@ -6,7 +6,6 @@ import '../../chapter/domain/chapter_db.dart'; */
 import '../../common/drawer_view.dart';
 import '../../help/presentation/help_button.dart';
 import '../data/user_providers.dart';
-import 'user_card_view.dart';
 
 const pageSpecification = '''
 # Users Page Specification
