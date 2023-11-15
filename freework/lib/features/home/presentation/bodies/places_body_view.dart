@@ -6,7 +6,7 @@ import '../../../places/domain/places_db.dart';
 import '../../../places/data/places_provider.dart';
 import 'package:freework/features/user/data/user_providers.dart';
 
-import '../../../user/domain/user_db.dart';
+import '../../../user/domain/user.dart';
 
 /// Displays a list of Nice Spots.
 class PlacesBodyView extends ConsumerWidget {
@@ -19,7 +19,7 @@ class PlacesBodyView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final PlacesDB placesDB = ref.watch(placesDBProvider);
-    final String currentUserID = ref.watch(currentUserIDProvider);
+    final String currentUserID = ref.watch(currentUserID);
     return Padding(
         padding: const EdgeInsets.all(10.0),
         child: ListView(

@@ -9,7 +9,7 @@ import '../data/places_provider.dart';
 
 import 'package:freework/features/user/data/user_providers.dart';
 
-import '../../user/domain/user_db.dart';
+import '../../user/domain/user.dart';
 import 'add_places_view.dart';
 
 const pageSpecification = '''

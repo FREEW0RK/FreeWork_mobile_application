@@ -7,7 +7,7 @@ import '../../places/data/places_provider.dart';
 import '../../places/domain/places_db.dart';
 
 import '../data/user_providers.dart';
-import '../domain/user_db.dart';
+import '../domain/user..dart';
 import 'package:freework/features/user/data/user_providers.dart';
 import 'user_avatar.dart';
 

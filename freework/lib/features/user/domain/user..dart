@@ -3,27 +3,42 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 
+import 'dart:convert';
 
-/// The data associated with users.
-class UserData {
-  UserData(
-      {required this.id,
-      required this.name,
-      required this.location,
-      required this.email,
-      required this.username,
-      this.imagePath,
-      required this.initials});
+import 'package:flutter/services.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  String id;
-  String name;
-  String email;
-  List location;
-  String username;
-  String? imagePath;
-  String initials;
+part 'user.freezed.dart';
+part 'user.g.dart';
+
+/// User Document.
+/// You must tell Firestore to use the 'id' field as the documentID
+@freezed
+class User with _$User {
+  const factory User({
+    required String id,
+    required String name,
+    required String username,
+    String? imagePath,
+    required String initials,
+  }) = _User;
+
+  const User._();
+
+  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
+
+  // Test that the json file can be converted into entities.
+  static Future<List<User>> checkInitialData() async {
+    String content =
+        await rootBundle.loadString("assets/initialData/users.json");
+    List<dynamic> initialData = json.decode(content);
+    return initialData.map((jsonData) => User.fromJson(jsonData)).toList();
+  }
 }
 
+
+
+/* 
 /// Provides access to and operations on all defined users.
 class UserDB {
   // create UserDB in ref (constructor)
@@ -70,9 +85,9 @@ UserData(
     imagePath: 'assets/images/freeworklogoearthgrinsgesicht.jpg',
     initials: 'CH')
 
-  ];
+  ]; */
 
-  UserData getUser(String userID) {
+/*   UserData getUser(String userID) {
     return _users.firstWhere((userData) => userData.id == userID);
   }
 
@@ -109,7 +124,7 @@ UserData(
   List<dynamic> getUserLocation(String userID) {
   final userData = _users.firstWhere((userData) => userData.id == userID);
   return userData.location;
-}
+} */
 
 }
 

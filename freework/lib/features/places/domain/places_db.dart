@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 //import 'area_db.dart';
-import '../../user/domain/user_db.dart';
+import '../../user/domain/user..dart';
 import 'package:freework/features/user/data/user_providers.dart';
 
 

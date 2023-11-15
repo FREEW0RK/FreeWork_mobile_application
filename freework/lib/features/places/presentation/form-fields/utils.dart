@@ -1,4 +1,4 @@
-import '../../../user/domain/user_db.dart';
+import '../../../user/domain/user..dart';
 
 /// Return null if the username string is valid, otherwise return an error message.
 validateUserNamesString(UserDB userDB, String val) {

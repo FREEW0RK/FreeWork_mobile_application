@@ -6,7 +6,7 @@ import '../../help/presentation/help_button.dart';
 import '../../places/domain/places_db.dart';
 import '../../places/data/places_provider.dart';
 
-import '../../user/domain/user_db.dart';
+import '../../user/domain/user..dart';
 import 'bodies/places_body_view.dart';
 import 'package:freework/features/user/data/user_providers.dart';
 

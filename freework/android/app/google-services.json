@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "660398834838",
+    "project_id": "freeworkapp-4a056",
+    "storage_bucket": "freeworkapp-4a056.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:660398834838:android:3bb9d14d41db4873292eb7",
+        "android_client_info": {
+          "package_name": "com.example.freework"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHM91URJLX34qOuOD5Uu2IEYNBkm2IBgc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

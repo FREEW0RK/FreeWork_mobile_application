@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+ import 'package:flutter/material.dart';
 
 import 'package:video_player/video_player.dart';
 
@@ -7,8 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
-import '../../user/domain/user_db.dart';
-import 'package:freework/features/user/data/user_providers.dart';
+import '../../user/domain/user.dart';
 
 
 // PROVIDER 
@@ -140,18 +139,18 @@ class _SigninViewState extends State<SigninView> {
                   onPressed: () {
                     bool validEmailAndPassword =
                         formKey.currentState?.saveAndValidate() ?? false;
-                    UserDB userDB = ref.read(userDBProvider);
+                    User user = ref.read(userProvider);
 
                     if (validEmailAndPassword) {
                       String email = formKey.currentState?.value['email'];
-                      if (userDB.isUserEmail(email)) {
-                        String userID = userDB.getUserID(email);
-                        ref.read(currentUserIDProvider.notifier).state = userID;
+                      if (user.isUserEmail(email)) {
+                        String userID = user.getUserID(email);
+                        ref.read(currentUserID.notifier).state = userID;
                         Navigator.pushReplacementNamed(context, '/home');
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                           content: Text(
-                              "Unknown User, try one of: ${userDB.getAllEmails().join(', ')}"),
+                              "Unknown User, try one of: ${user.getAllEmails().join(', ')}"),
                           duration: const Duration(seconds: 10),
                         ));
                       }
@@ -245,18 +244,18 @@ class _SigninViewState extends State<SigninView> {
                   onPressed: () {
                     bool validEmailAndPassword =
                         _formKey.currentState?.saveAndValidate() ?? false;
-                    UserDB userDB = ref.read(userDBProvider);
+                    User user = ref.read(userProvider);
 
                     if (validEmailAndPassword) {
                       String email = _formKey.currentState?.value['email'];
-                      if (userDB.isUserEmail(email)) {
-                        String userID = userDB.getUserID(email);
+                      if (user.isUserEmail(email)) {
+                        String userID = user.getUserID(email);
                         ref.read(currentUserIDProvider.notifier).state = userID;
                         Navigator.pushReplacementNamed(context, '/home');
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                           content: Text(
-                              "Unknown User, try one of: ${userDB.getAllEmails().join(', ')}"),
+                              "Unknown User, try one of: ${user.getAllEmails().join(', ')}"),
                           duration: const Duration(seconds: 10),
                         ));
                       }
@@ -375,4 +374,3 @@ class _SigninViewState extends State<SigninView> {
     _controller.dispose();
   } */
 }
- */

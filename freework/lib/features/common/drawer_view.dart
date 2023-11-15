@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freework/features/places/presentation/places_view.dart';
-import '../user/domain/user_db.dart';
+import '../user/domain/user..dart';
 import '../help/presentation/help_view.dart';
-import '../home/presentation/home_view.dart';
+import '../home_view.dart';
 import '../settings/presentation/settings_view.dart';
 import '../user/presentation/user_avatar.dart';
 import 'package:freework/features/user/data/user_providers.dart';
@@ -21,9 +21,9 @@ class DrawerView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final UserDB userDB = ref.watch(userDBProvider);
+    final User user = ref.watch(userProvider);
     final String currentUserID = ref.watch(currentUserIDProvider);
-    UserData user = userDB.getUser(currentUserID);
+    UserData user = user.getUser(currentUserID);
     return Drawer(
       child: ListView(
         children: [
