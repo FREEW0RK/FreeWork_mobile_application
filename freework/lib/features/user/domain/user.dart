@@ -1,7 +1,3 @@
-//import 'dart:html';
-
-
-
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
@@ -36,8 +32,27 @@ class User with _$User {
 }
 
 
-
 /* 
+/// The data associated with users.
+class UserData {
+  UserData(
+      {required this.id,
+      required this.name,
+      required this.location,
+      required this.email,
+      required this.username,
+      this.imagePath,
+      required this.initials});
+
+  String id;
+  String name;
+  String email;
+  List location;
+  String username;
+  String? imagePath;
+  String initials;
+}
+
 /// Provides access to and operations on all defined users.
 class UserDB {
   // create UserDB in ref (constructor)
@@ -84,9 +99,9 @@ UserData(
     imagePath: 'assets/images/freeworklogoearthgrinsgesicht.jpg',
     initials: 'CH')
 
-  ]; */
+  ];
 
-/*   UserData getUser(String userID) {
+  UserData getUser(String userID) {
     return _users.firstWhere((userData) => userData.id == userID);
   }
 
@@ -123,13 +138,9 @@ UserData(
   List<dynamic> getUserLocation(String userID) {
   final userData = _users.firstWhere((userData) => userData.id == userID);
   return userData.location;
-} */
-
 }
 
-
-
-
+}
 
 
 
@@ -154,4 +165,4 @@ UserDB userDB = UserDB();
 
 /// The currently logged in user.
 String currentUserID = 'user-005';
- */
+ */ */
