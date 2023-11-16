@@ -3,23 +3,21 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 //import '../data_model/chapter_db.dart';
 import '../domain/places_db.dart';
-import '../data/place_provider.dart';
 
 
 import 'edit_place_view.dart';
-import 'places_summary_users_view.dart';
 
 enum PlaceAction { edit, leave }
 
 /// Provides a Card summarizing a garden.
-class PlacesSummaryView extends ConsumerWidget {
-  const PlacesSummaryView({Key? key, required this.placeID}) : super(key: key);
+class PlaceSummaryView extends ConsumerWidget {
+  const PlaceSummaryView({Key? key, required this.placeID}) : super(key: key);
 
   final String placeID;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final PlacesDB placesDB = ref.watch(placesDBProvider);
+    final PlacesDB placesDB = ref.watch(placesProvider);
     //final ChapterDB chapterDB = ref.watch(chapterDBProvider);
     PlacesData placesData = placesDB.getPlace(placeID);
     String title = placesData.name;
@@ -68,7 +66,7 @@ class PlacesSummaryView extends ConsumerWidget {
             ),
           ),
           const SizedBox(height: 10),
-          PlacesSummaryUsersView(placeID: placeID),
+          PlaceSummaryUsersView(placeID: placeID),
           const SizedBox(height: 10),
           Padding(
             padding: const EdgeInsets.all(8.0),

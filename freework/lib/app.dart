@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'features/settings/presentation/settings_view.dart';
 
-import 'package:freework/features/places/presentation/places_view.dart';
+import 'package:freework/features/place/presentation/places_view.dart';
 import 'package:freework/features/poll/presentation/poll.dart';
 
 
@@ -19,8 +19,8 @@ import 'package:freework/features/map/presentation/main_map.dart';
 import 'package:freework/features/start/presentation/start.dart';
 
 
-import 'package:freework/features/places/presentation/add_places_view.dart';
-import 'package:freework/features/places/presentation/edit_place_view.dart';
+import 'package:freework/features/place/presentation/add_place_view.dart';
+import 'package:freework/features/place/presentation/edit_place_view.dart';
 
 
 
@@ -63,10 +63,10 @@ class MyApp extends ConsumerWidget {
                     return const PollingPage();
                 case SignupView.routeName:
                     return const SignupView();     
-                case PlacesView.routeName:
-                    return const PlacesView();
-                case AddPlacesView.routeName:
-                    return AddPlacesView();
+                case PlaceView.routeName:
+                    return const PlaceView();
+                case AddPlaceView.routeName:
+                    return AddPlaceView();
                 case EditPlaceView.routeName:
                     return EditPlaceView();
                 case SigninView.routeName:

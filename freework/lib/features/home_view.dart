@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'common/drawer_view.dart';
 import 'help/presentation/help_button.dart';
-import 'places/domain/places_db.dart';
-import 'places/data/place_provider.dart';
+import 'place/domain/place.dart';
+import 'place/domain/place_collection.dart';
 
-import 'user/domain/user.dart';
 import 'home/presentation/bodies/places_body_view.dart';
-import 'package:freework/features/user/data/user_providers.dart';
 
+
+import 'fw_error.dart';
+import 'fw_loading.dart';
+import 'all_data_provider.dart';
 
 //import '../../data_model/news_db.dart';
 //import 'bodies/chapter_body_view.dart';
@@ -41,25 +42,39 @@ class _HomeViewState extends ConsumerState<HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    final String currentUserID = ref.watch(currentUserIDProvider);
-    final Places places = ref.watch(placesProvider);
-    //final NewsDB newsDB = ref.watch(newsDBProvider);
-    //String numNews =
-      //  newsDB.getAssociatedNewsIDs(currentUserID).length.toString();
-    String numPlaces = places
+    final AsyncValue<AllData> asyncAllData = ref.watch(allDataProvider);
+    return asyncAllData.when(
+        data: (allData) => _build(
+            context: context,
+            currentUserID: allData.currentUserID,
+            //news: allData.news,
+            places: allData.places),
+        loading: () => const FWLoading(),
+        error: (error, st) => FWError(error.toString(), st.toString()));
+  }
+
+  
+  Widget _build(
+      {required BuildContext context,
+      required String currentUserID,
+      //required List<News> news,
+      required List<Place> places}) {
+    final placeCollection = PlaceCollection(places);
+    //final newsCollection = NewsCollection(news);
+    /*  String numNews =
+        newsCollection.getAssociatedNewsIDs(currentUserID).length.toString(); */
+    String numPlaces = placeCollection
         .getAssociatedPlaceIDs(userID: currentUserID)
         .length
         .toString();
     //String numDiscussions = 0.toString();
 
-
-
     // This data structure will eventually become stateful and thus will
     // need to be moved into the state widget.
-    final Map<int, Map<String, dynamic>> pages = {
+    final Map pages = {
       0: {
         'title': const Text('Nice Spots'),
-        'body': const PlacesBodyView(),
+        'body': const PlaceBodyView(),
         'navItem': BottomNavigationBarItem(
           label: 'My Nice Spots ($numPlaces)',
           icon: const Icon(Icons.beach_access_sharp),
@@ -96,7 +111,6 @@ class _HomeViewState extends ConsumerState<HomeView> {
       },*/
     }; 
  */
-
 
 
     return Scaffold(

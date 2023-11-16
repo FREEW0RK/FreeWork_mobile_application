@@ -1,7 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../domain/place.dart';
-import 'place_database.dart';
 
 part 'place_provider.g.dart';
 
@@ -11,13 +10,10 @@ PlaceDatabase placeDatabase(PlaceDatabaseRef ref) {
 }
 
 @riverpod
-Stream<List<Place>> place(PlacesRef ref) {
+Stream<List<Place>> place(PlaceRef ref) {
   final database = ref.watch(placeDatabaseProvider);
   return database.watchplacess();
 }
-
-
-
 
 
 

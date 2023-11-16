@@ -1,7 +1,6 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+/* import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 //import 'area_db.dart';
-import 'package:freework/features/user/data/user_providers.dart';
 
 
 
@@ -86,7 +85,7 @@ class PlacesDB {
   ];
   
 
-  void addPlace({
+  void addPlace({/*  */
       required String name,
       required String description,
       required String location,
@@ -285,4 +284,4 @@ final placesDBProvider = Provider<PlacesDB>((ref) {
 });
 
 /// The singleton instance of a placeDB used by clients to access place data.
-//PlacesDB placesDB = PlacesDB(); */
+//PlacesDB placesDB = PlacesDB(); */ */

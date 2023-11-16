@@ -1,9 +1,6 @@
-import 'package:freework/features/places/data/Place.dart';
-
 import 'place.dart';
 
 /// Encapsulates operations on the list of [Place] returned from Firestore.
-
 class PlaceCollection {
   PlaceCollection(places) : _places = places;
 
@@ -34,35 +31,11 @@ class PlaceCollection {
     } */
     return [];
   }
-
-
-
-  List<String> getAssociatedUserIDs(placeID) {
-    Place data = getPlace(placeID);
-    return [data.ownerID, ...data.viewerIDs, ...data.editorIDs];
-  }
-
-  /* List<String> getAssociatedUserIDs(String placeID) {
-    Place data = getPlace(placeID);
-    List<String> associatedUserIDs = [...data.visitorIDs, ...data.editorIDs];
-    if (data.ownerID != null) {
-      associatedUserIDs.add(data.ownerID!);
-    }
-    return associatedUserIDs;
-  } */
-
-  bool _userIsAssociated(String placeID, String userID) {
-    PlacesData data = getPlace(placeID);
-    return ((data.ownerID == userID) ||
-        (data.visitorIDs.contains(userID)) ||
-        (data.editorIDs.contains(userID)));
-  }
-
-  
+    
   List<Place> getAssociatedPlaces({String? userID//, String? chapterID
   }) {
     if (userID != null) {
-      return _Places
+      return _places
           .where((Place) => _userIsAssociated(Place.id, userID))
           .toList();
     }
@@ -73,7 +46,33 @@ class PlaceCollection {
   }
 
 
+  List<String> getAssociatedUserIDs(placeID) {
+    Place data = getPlace(placeID);
+    return [data.ownerID, ...data.visitorIDs, ...data.editorIDs];
+  }
 
+
+  
+  bool _userIsAssociated(String placeID, String userID) {
+    Place data = getPlace(placeID);
+    return ((data.ownerID == userID) ||
+        (data.visitorIDs.contains(userID)) ||
+        (data.editorIDs.contains(userID)));
+  }
+
+
+  /* List<String> getAssociatedUserIDs(String placeID) {
+    Place data = getPlace(placeID);
+    List<String> associatedUserIDs = [...data.visitorIDs, ...data.editorIDs];
+    if (data.ownerID != null) {
+      associatedUserIDs.add(data.ownerID!);
+    }
+    return associatedUserIDs;
+  } */
+
+
+
+/* 
 
   User? getOwner(String placeID) {
   PlacesData data = getPlace(placeID);
@@ -104,6 +103,6 @@ List<User> getViewers(String placeID) {
   PlacesData data = getPlace(placeID);
   User user = ref.read(userProvider);
   return user.getUsers(data.visitorIDs);
-}
+} */
 }
 

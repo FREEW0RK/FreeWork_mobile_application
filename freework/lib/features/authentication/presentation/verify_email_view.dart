@@ -1,9 +1,9 @@
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:freework/features/authentication/presentation/login_view_video.dart';
 
 import '../../home_view.dart';
 import 'decorations.dart';
+import 'login_view_video.dart';
 
 /// Builds the page to support email verification.
 class VerifyEmailView extends StatelessWidget {
@@ -22,7 +22,7 @@ class VerifyEmailView extends StatelessWidget {
         }),
         AuthCancelledAction((context) {
           FirebaseUIAuth.signOut(context: context);
-          Navigator.pushReplacementNamed(context, SignInView.routeName);
+          Navigator.pushReplacementNamed(context, SigninView.routeName);
         }),
       ],
     );

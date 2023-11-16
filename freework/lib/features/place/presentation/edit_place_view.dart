@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 
-import 'package:freework/features/places/presentation/form-fields/description_field.dart';
-import 'package:freework/features/places/presentation/form-fields/editors_field.dart';
-import 'package:freework/features/places/presentation/form-fields/place_name_field.dart';
-import 'package:freework/features/places/presentation/form-fields/visitors_field.dart';
-import 'package:freework/features/places/presentation/form-fields/submit_button.dart';
-import 'package:freework/features/places/presentation/form-fields/photo_field.dart';
-import 'package:freework/features/places/presentation/form-fields/reset_button.dart';
-import 'package:freework/features/places/presentation/form-fields/location_field.dart';
-import 'package:freework/features/places/presentation/form-fields/placetype_dropdown_field.dart';
+import 'package:freework/features/place/presentation/form-fields/description_field.dart';
+import 'package:freework/features/place/presentation/form-fields/editors_field.dart';
+import 'package:freework/features/place/presentation/form-fields/place_name_field.dart';
+import 'package:freework/features/place/presentation/form-fields/submit_button.dart';
+import 'package:freework/features/place/presentation/form-fields/photo_field.dart';
+import 'package:freework/features/place/presentation/form-fields/reset_button.dart';
+import 'package:freework/features/place/presentation/form-fields/location_field.dart';
+import 'package:freework/features/place/presentation/form-fields/placetype_dropdown_field.dart';
 
 
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -17,12 +16,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../help/presentation/help_button.dart';
 //import '../../data_model/chapter_db.dart';
 import '../domain/places_db.dart';
-import '../data/place_provider.dart';
 
 import 'package:freework/features/user/data/user_providers.dart';
 import '../../user/domain/user..dart';
 import 'form-fields/utils.dart';
-import 'places_view.dart';
 
 /// Edit data for a specific garden.
 class EditPlaceView extends ConsumerWidget {

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:freework/features/places/presentation/places_view.dart';
-import '../user/domain/user..dart';
+import '../user/domain/user.dart';
 import '../help/presentation/help_view.dart';
 import '../home_view.dart';
 import '../settings/presentation/settings_view.dart';
@@ -23,7 +22,7 @@ class DrawerView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final User user = ref.watch(userProvider);
     final String currentUserID = ref.watch(currentUserIDProvider);
-    UserData user = user.getUser(currentUserID);
+    User user = user.getUser(currentUserID);
     return Drawer(
       child: ListView(
         children: [
@@ -46,7 +45,7 @@ class DrawerView extends ConsumerWidget {
             leading: const Icon(Icons.beach_access_sharp),
             title: const Text('Nice FW Spot'),
             onTap: () {
-              Navigator.pushReplacementNamed(context, PlacesView.routeName);
+              Navigator.pushReplacementNamed(context, PlaceView.routeName);
             },
            ),
          /* ListTile(

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../domain/places_db.dart';
-import '../data/place_provider.dart';
 
 import '../../user/presentation/user_labeled_avatar.dart';
 
@@ -15,8 +14,8 @@ class PlacesSummaryUsersView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final PlacesDB placesDB = ref.watch(placesDBProvider);
-    PlacesData placeData = placesDB.getPlace(placeID);
+    final Places places = ref.watch(placesProvider);
+    PlacesData placeData = places.getPlace(placeID);
     double padding = 10;
 
     return Row(mainAxisAlignment: MainAxisAlignment.start, children: [

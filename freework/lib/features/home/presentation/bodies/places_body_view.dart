@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../places/presentation/places_summary_view.dart';
-import '../../../places/domain/places_db.dart';
-import '../../../places/data/place_provider.dart';
-import 'package:freework/features/user/data/user_providers.dart';
+import '../../../place/data/place_provider.dart';
+import '../../../place/domain/place.dart';
+import '../../../place/domain/place_collection.dart';
 
-import '../../../user/domain/user.dart';
+
+
+
 
 /// Displays a list of Nice Spots.
-class PlacesBodyView extends ConsumerWidget {
-  const PlacesBodyView({
+class PlaceBodyView extends ConsumerWidget {
+  const PlaceBodyView({
     super.key,
   });
 
@@ -18,14 +19,14 @@ class PlacesBodyView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final PlacesDB placesDB = ref.watch(placesDBProvider);
+    final Place place = ref.watch(placeProvider);
     final String currentUserID = ref.watch(currentUserID);
     return Padding(
         padding: const EdgeInsets.all(10.0),
         child: ListView(
-            children: placesDB
+            children: place
                 .getAssociatedPlaceIDs(userID: currentUserID)
-                .map((placeID) => PlacesSummaryView(placeID: placeID))
+                .map((placeID) => PlaceSummaryView(placeID: placeID))
                 .toList()
                 .toList()));
   }

@@ -13,7 +13,7 @@ class PlacesDatabase {
   final _service = FirestoreService.instance;
 
   Stream<List<Place>> watchPlaces() => _service.watchCollection(
-      path: FirestorePath.place(),
+      path: FirestorePath.places(),
       builder: (data, documentId) => Place.fromJson(data!));
 
   Stream<Place> watchPlace(String placeId) => _service.watchDocument(
@@ -21,7 +21,7 @@ class PlacesDatabase {
       builder: (data, documentId) => Place.fromJson(data!));
 
   Future<List<Place>> fetchPlaces() => _service.fetchCollection(
-      path: FirestorePath.place(),
+      path: FirestorePath.places(),
       builder: (data, documentId) => Place.fromJson(data!));
 
   Future<Place> fetchPlace(String placeId) => _service.fetchDocument(
@@ -29,7 +29,7 @@ class PlacesDatabase {
       builder: (data, documentId) => Place.fromJson(data!));
 
   Future<void> setPlace(Place place) => _service.setData(
-      path: FirestorePath.Place(Place.id), data: place.toJson());
+      path: FirestorePath.place(place.id), data: place.toJson());
 
   Future<void> setPlaceDelayed(Place place) => Future.delayed(
       const Duration(milliseconds: 2000),

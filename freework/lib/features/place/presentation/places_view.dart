@@ -4,13 +4,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../common/drawer_view.dart';
 import 'places_summary_view.dart';
 import '../../help/presentation/help_button.dart';
-import '../domain/places_db.dart';
-import '../data/place_provider.dart';
 
 import 'package:freework/features/user/data/user_providers.dart';
 
-import '../../user/domain/user.dart';
-import 'add_places_view.dart';
+import 'add_place_view.dart';
 
 const pageSpecification = '''
 # Gardens Page Specification
@@ -44,8 +41,8 @@ Possible actions associated with each card:
 ''';
 
 /// Provides a page presenting all of the defined Nice FW Spots.
-class PlacesView extends ConsumerWidget {
-  const PlacesView({
+class PlaceView extends ConsumerWidget {
+  const PlaceView({
     super.key,
   });
 
@@ -54,17 +51,17 @@ class PlacesView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final PlacesDB placesDB = ref.watch(placesDBProvider);
+    final Place place = ref.watch(placesProvider);
     final String currentUserID = ref.watch(currentUserIDProvider);
     return Scaffold(
       drawer: const DrawerView(),
       appBar: AppBar(
         title: const Text('Nice Spots'),
-        actions: const [HelpButton(routeName: PlacesView.routeName)],
+        actions: const [HelpButton(routeName: PlaceView.routeName)],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.restorablePushNamed(context, AddPlacesView.routeName);
+          Navigator.restorablePushNamed(context, AddPlaceView.routeName);
         },
         child: const Icon(Icons.add),
       ),
@@ -72,9 +69,9 @@ class PlacesView extends ConsumerWidget {
       body: Padding(
           padding: const EdgeInsets.all(10.0),
           child: ListView(
-              children: placesDB
+              children: place
                   .getAssociatedPlaceIDs(userID: currentUserID)
-                  .map((placeID) => PlacesSummaryView(placeID: placeID))
+                  .map((placeID) => PlaceSummaryView(placeID: placeID))
                   .toList()
                   .toList())),
       bottomNavigationBar: const BottomAppBar(
