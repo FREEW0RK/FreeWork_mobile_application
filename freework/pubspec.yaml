@@ -67,5 +67,7 @@ flutter:
     - assets/fonts/
     - assets/map_styles/
     - assets/theme/
-
+    - assets/initialData/
+    
+    
     
