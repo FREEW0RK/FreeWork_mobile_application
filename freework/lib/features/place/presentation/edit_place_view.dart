@@ -21,17 +21,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../help/presentation/help_button.dart';
 //import '../../data_model/chapter_db.dart';
-import '../domain/places_db.dart';
 import '../domain/place.dart';
 import '../domain/place_collection.dart';
 
-import '../data/place_provider.dart';
 
-import 'package:freework/features/user/data/user_providers.dart';
 import '../../user/domain/user.dart';
 import '../../user/domain/user_collection.dart';
 
-import 'form-fields/utils.dart';
 import 'places_view.dart';
 
 import '../../fw_error.dart';

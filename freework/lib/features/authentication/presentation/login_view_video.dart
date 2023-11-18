@@ -1,10 +1,6 @@
  import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:form_builder_validators/form_builder_validators.dart';
-import '../../user/domain/user.dart';
-import 'package:freework/features/user/data/user_providers.dart';
 
 
 import 'package:firebase_ui_auth/firebase_ui_auth.dart' hide ForgotPasswordView;

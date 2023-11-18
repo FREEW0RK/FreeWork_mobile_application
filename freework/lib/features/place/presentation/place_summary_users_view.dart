@@ -7,10 +7,8 @@ import '../../all_data_provider.dart';
 
 import '../../user/presentation/user_labeled_avatar.dart';
 
-import '../domain/places_db.dart';
 import '../domain/place.dart';
 import '../domain/place_collection.dart';
-import '../data/place_provider.dart';
 
 
 

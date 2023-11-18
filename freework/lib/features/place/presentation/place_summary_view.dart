@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 //import '../data_model/chapter_db.dart';
-import '../domain/places_db.dart';
 import '../domain/place.dart';
 import '../domain/place_collection.dart';
 
-import '../data/place_provider.dart';
 import 'place_summary_users_view.dart';
 import 'edit_place_view.dart';
 import 'edit_place_controller.dart';

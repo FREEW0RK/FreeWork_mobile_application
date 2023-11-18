@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../global_snackbar.dart';
 import '../../fw_error.dart';
 import '../../fw_loading.dart';
 import '../../all_data_provider.dart';
@@ -10,7 +9,6 @@ import '../../drawer_view.dart';
 import 'place_summary_view.dart';
 import '../../help/presentation/help_button.dart';
 
-import 'package:freework/features/user/data/user_providers.dart';
 import 'add_place_view.dart';
 
 import '../domain/place.dart';

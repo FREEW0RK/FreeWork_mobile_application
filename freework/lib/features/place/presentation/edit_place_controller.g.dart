@@ -7,7 +7,7 @@ part of 'edit_place_controller.dart';
 // **************************************************************************
 
 String _$editPlaceControllerHash() =>
-    r'34a4b3d40b407d16eccd7640972e247dbf7e4a06';
+    r'62aa940580d0dc4636fe0d4b4f2ad850f8673e5c';
 
 /// See also [EditPlaceController].
 @ProviderFor(EditPlaceController)

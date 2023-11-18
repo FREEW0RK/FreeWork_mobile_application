@@ -1,4 +1,3 @@
-import 'package:firebase_ui_auth/firebase_ui_auth.dart' hide UserAvatar;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -10,16 +9,10 @@ import 'all_data_provider.dart';
 import 'user/domain/user.dart';
 import 'user/domain/user_collection.dart';
 import 'user/presentation/user_avatar.dart';
-import 'user/presentation/users_view.dart';
-import 'authentication/presentation/login_view_video.dart';
 
 import 'settings/presentation/settings_view.dart';
-
 import 'help/presentation/help_view.dart';
 import 'home_view.dart';
-import 'settings/presentation/settings_view.dart';
-import 'user/presentation/user_avatar.dart';
-import 'package:freework/features/user/data/user_providers.dart';
 import 'place/presentation/places_view.dart';
 
 /* 
