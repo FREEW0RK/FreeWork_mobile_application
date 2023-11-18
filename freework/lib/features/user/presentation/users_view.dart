@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /* import '../../chapter/data/chapter_providers.dart';
 import '../../chapter/domain/chapter_db.dart'; */
-import '../../common/drawer_view.dart';
+import '../../drawer_view.dart';
 import '../../help/presentation/help_button.dart';
 import '../data/user_providers.dart';
 

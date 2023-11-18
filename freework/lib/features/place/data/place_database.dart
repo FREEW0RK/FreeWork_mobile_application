@@ -5,10 +5,10 @@ import '../../../repositories/firestore/firestore_service.dart';
 import '../domain/place.dart';
 
 /// Provides access to the Firestore database storing [Place] documents.
-class PlacesDatabase {
-  PlacesDatabase(this.ref);
+class PlaceDatabase {
+  PlaceDatabase(this.ref);
 
-  final ProviderRef<PlacesDatabase> ref;
+  final ProviderRef<PlaceDatabase> ref;
 
   final _service = FirestoreService.instance;
 

@@ -6,15 +6,15 @@ import '../../fw_loading.dart';
 import '../../all_data_provider.dart';
 import '../domain/place.dart';
 import '../domain/place_collection.dart';
-import 'places_summary_view.dart';
+import 'place_summary_view.dart';
 
-/// Builds a list of [placeSummaryView].
-class placeBodyView extends ConsumerWidget {
-  const placeBodyView({
+/// Builds a list of [PlaceSummaryView].
+class PlaceBodyView extends ConsumerWidget {
+  const PlaceBodyView({
     super.key,
   });
 
-  final String title = 'places';
+  final String title = 'Nice Spots';
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

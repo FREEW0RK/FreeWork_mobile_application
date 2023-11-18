@@ -1,5 +1,6 @@
+
 import 'package:flutter/material.dart';
-import '../../pages/mockup_markdown/mockup_markdown.dart';
+import '../../mockup_markdown.dart';
 
 const pageSpecification = '''
 # Help Page Specification

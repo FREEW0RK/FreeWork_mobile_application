@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'edit_place_controller.dart';
+import '../../global_snackbar.dart';
+
+
 
 import 'package:freework/features/place/presentation/form-fields/description_field.dart';
 import 'package:freework/features/place/presentation/form-fields/editors_field.dart';
 import 'package:freework/features/place/presentation/form-fields/place_name_field.dart';
+import 'package:freework/features/place/presentation/form-fields/visitors_field.dart';
 import 'package:freework/features/place/presentation/form-fields/submit_button.dart';
 import 'package:freework/features/place/presentation/form-fields/photo_field.dart';
 import 'package:freework/features/place/presentation/form-fields/reset_button.dart';
 import 'package:freework/features/place/presentation/form-fields/location_field.dart';
 import 'package:freework/features/place/presentation/form-fields/placetype_dropdown_field.dart';
-
+import 'form-fields/utils.dart';
 
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -16,10 +22,22 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../help/presentation/help_button.dart';
 //import '../../data_model/chapter_db.dart';
 import '../domain/places_db.dart';
+import '../domain/place.dart';
+import '../domain/place_collection.dart';
+
+import '../data/place_provider.dart';
 
 import 'package:freework/features/user/data/user_providers.dart';
-import '../../user/domain/user..dart';
+import '../../user/domain/user.dart';
+import '../../user/domain/user_collection.dart';
+
 import 'form-fields/utils.dart';
+import 'places_view.dart';
+
+import '../../fw_error.dart';
+import '../../fw_loading.dart';
+import '../../all_data_provider.dart';
+
 
 /// Edit data for a specific garden.
 class EditPlaceView extends ConsumerWidget {
@@ -31,8 +49,6 @@ class EditPlaceView extends ConsumerWidget {
   final _descriptionFieldKey = GlobalKey<FormBuilderFieldState>();
   final _locationFieldKey = GlobalKey<FormBuilderFieldState>();  
   final _placeTypeFieldKey = GlobalKey<FormBuilderFieldState>();
-
-
   //final _chapterFieldKey = GlobalKey<FormBuilderFieldState>();
   final _photoFieldKey = GlobalKey<FormBuilderFieldState>();
   final _editorsFieldKey = GlobalKey<FormBuilderFieldState>();
@@ -40,22 +56,45 @@ class EditPlaceView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final AsyncValue<AllData> asyncAllData = ref.watch(allDataProvider);
     //final ChapterDB chapterDB = ref.watch(chapterDBProvider);
-    final UserDB userDB = ref.watch(userDBProvider);
-    final PlacesDB placesDB = ref.watch(placesDBProvider);
-    final String currentUserID = ref.watch(currentUserIDProvider);
+    return asyncAllData.when(
+        data: (allData) => _build(
+            context: context,
+            currentUserID: allData.currentUserID,
+            places: allData.places,
+            users: allData.users,
+            //chapters: allData.chapters,
+            ref: ref),
+        loading: () => const FWLoading(),
+        error: (e, st) => FWError(e.toString(), st.toString()));
+  }
+
+
+  Widget _build(
+      {required BuildContext context,
+      required String currentUserID,
+      required List<Place> places,
+      //required List<Chapter> chapters,
+      required List<User> users,
+      required WidgetRef ref}) {
+    //ChapterCollection chapterCollection = ChapterCollection(chapters);
+    PlaceCollection placeCollection = PlaceCollection(places);
+    UserCollection userCollection = UserCollection(users);
     String placeID = ModalRoute.of(context)!.settings.arguments as String;
-    PlacesData placesData = placesDB.getPlace(placeID);
-/*     List<String> chapterNames = chapterDB.getChapterNames();
-    String currChapterName = chapterDB.getChapter(gardenData.chapterID).name; */
-    String currEditors = placesData.editorIDs
-        .map((userID) => userDB.getUser(userID).username)
+    Place placeData = placeCollection.getPlace(placeID);
+    //List<String> chapterNames = chapterCollection.getChapterNames();
+   /*  String currChapterName =
+        chapterCollection.getChapter placeData.chapterID).name; */
+    String currEditors = placeData.editorIDs
+        .map((userID) => userCollection.getUser(userID).username)
         .toList()
         .join(', ');
-    String currViewers = placesData.visitorIDs
-        .map((userID) => userDB.getUser(userID).username)
+    String currViewers = placeData.visitorIDs
+        .map((userID) => userCollection.getUser(userID).username)
         .toList()
         .join(', ');
+
 
     void onSubmit() {
       bool isValid = _formKey.currentState?.saveAndValidate() ?? false;
@@ -65,17 +104,16 @@ class EditPlaceView extends ConsumerWidget {
       String description = _descriptionFieldKey.currentState?.value;
       String location = _locationFieldKey.currentState?.value;
       String placeType = _placeTypeFieldKey.currentState?.value;
-
-
     /*   String chapterID =
           chapterDB.getChapterIDFromName(_chapterFieldKey.currentState?.value); */
       String imagePath = _photoFieldKey.currentState?.value;
       String editorsString = _editorsFieldKey.currentState?.value ?? '';
-      List<String> editorIDs = usernamesToIDs(userDB, editorsString);
+      List<String> editorIDs = usernamesToIDs(userCollection, editorsString);
       String visitorString = _visitorFieldKey.currentState?.value ?? '';
-      List<String> visitorIDs = usernamesToIDs(userDB, visitorString);
+      List<String> visitorIDs = usernamesToIDs(userCollection, visitorString);
+      String lastUpdate = DateFormat.yMd().format(DateTime.now());
       // Update the garden data.
-      placesDB.updatePlace(
+      Place place = Place(
           id: placeID,
           name: name,
           description: description,
@@ -83,23 +121,24 @@ class EditPlaceView extends ConsumerWidget {
           placeType: placeType,
           //chapterID: chapterID,
           imagePath: imagePath,
+          lastUpdate: lastUpdate,
           editorIDs: editorIDs,
           ownerID: currentUserID,
-          visitorIDs: visitorIDs);
-      // Return to the list places page
-      Navigator.pushReplacementNamed(context, PlacesView.routeName);
+          visitorIDs: visitorIDs  );
+      ref.read(editPlaceControllerProvider.notifier).updatePlace(
+            place: place,
+            onSuccess: () {
+              Navigator.pushReplacementNamed(context, PlaceView.routeName);
+              GlobalSnackBar.show('Nice Spot "$name" updated.');
+            },
+          );
     }
 
     void onReset() {
       _formKey.currentState?.reset();
     }
 
-    return Scaffold(
-        appBar: AppBar(
-          title: const Text('Edit Nice Spot'),
-          actions: const [HelpButton(routeName: EditPlaceView.routeName)],
-        ),
-        body: ListView(
+    Widget editPlaceForm() => ListView(
           padding: const EdgeInsets.symmetric(horizontal: 24.0),
           children: [
             Column(
@@ -109,31 +148,31 @@ class EditPlaceView extends ConsumerWidget {
                   child: Column(
                     children: [
                       PlaceNameField(
-                          fieldKey: _nameFieldKey, currName: placesData.name),
+                          fieldKey: _nameFieldKey, currName: placeData.name),
                       DescriptionField(
                           fieldKey: _descriptionFieldKey,
-                          currDescription: placesData.description),
+                          currDescription: placeData.description),
                       LocationField(
                           fieldKey: _locationFieldKey,
-                          currLocation: placesData.location),
+                          currLocation: placeData.location),
                           
                       PlaceTypeDropdownField(
                           fieldKey: _placeTypeFieldKey,
-                          currPlacetype: placesData.placeType),       
+                          currPlacetype: placeData.placeType),       
                       /* ChapterDropdownField(
                           fieldKey: _chapterFieldKey,
                           chapterNames: chapterNames,
                           currChapter: currChapterName), */
                       PhotoField(
                           fieldKey: _photoFieldKey,
-                          currPhoto: placesData.imagePath),
+                          currPhoto: placeData.imagePath),
                       EditorsField(
                           fieldKey: _editorsFieldKey,
-                          userDB: userDB,
+                          userCollection: userCollection,
                           currEditors: currEditors),
                       VisitorsField(
                           fieldKey: _visitorFieldKey,
-                          userDB: userDB,
+                          userCollection: userCollection,
                           currViewers: currViewers),
                     ],
                   ),
@@ -144,9 +183,23 @@ class EditPlaceView extends ConsumerWidget {
                     ResetButton(onReset: onReset),
                   ],
                 ),
+                
               ],
             ),
           ],
-        ));
+        );
+  AsyncValue asyncUpdate = ref.watch(editPlaceControllerProvider);
+
+  return Scaffold(
+      appBar: AppBar(
+        title: const Text('Edit Garden'),
+        actions: const [HelpButton(routeName: EditPlaceView.routeName)],
+      ),
+      body: asyncUpdate.when(
+          data: (_) => editPlaceForm(),
+          loading: () => const FWLoading(),
+          error: (e, st) => FWError(e.toString(), st.toString())));
+
   }
 }
+

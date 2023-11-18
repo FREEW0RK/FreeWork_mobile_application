@@ -10,13 +10,16 @@ import '../../fw_loading.dart';
 import '../../all_data_provider.dart';
 import '../../place/domain/place.dart';
 import '../../place/domain/place_collection.dart';
+import '../domain/user.dart';
 import 'user_avatar.dart';
+
+
 
 // A Card that summarizes information about a User.
 class UserCardView extends ConsumerWidget {
   const UserCardView({Key? key, required this.user}) : super(key: key);
 
-  final String user;
+  final User user;
 
 
   @override
@@ -48,7 +51,7 @@ class UserCardView extends ConsumerWidget {
     List<String> placeNames = placeCollection
         .getAssociatedPlaceIDs(userID: user.id)
         .map((placeID) => placeCollection.getPlace(placeID))
-        .map((placeData) => placeData.name)
+        .map((placeData) =>placeData.name)
         .toList();
     /* List<String> chapterNames = chapterDB
         .getAssociatedChapterIDs(userID)

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'common/drawer_view.dart';
+import 'drawer_view.dart';
 import 'help/presentation/help_button.dart';
 import 'place/domain/place.dart';
 import 'place/domain/place_collection.dart';
 
-import 'home/presentation/bodies/places_body_view.dart';
+import 'place/presentation/places_body_view.dart';
 
 
 import 'fw_error.dart';

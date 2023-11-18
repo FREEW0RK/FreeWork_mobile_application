@@ -8,8 +8,8 @@ import 'field_padding.dart';
 import 'utils.dart';
 
 /// A text field to input garden photo file name found in images subdirectory.
-class ViewersField extends StatelessWidget {
-  const ViewersField(
+class VisitorsField extends StatelessWidget {
+  const VisitorsField(
       {super.key,
       required this.fieldKey,
       required this.userCollection,

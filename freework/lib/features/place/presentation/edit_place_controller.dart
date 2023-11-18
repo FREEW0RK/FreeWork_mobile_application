@@ -2,6 +2,8 @@ import 'package:flutter/foundation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../data/place_provider.dart';
+import '../data/place_database.dart';
+
 import '../domain/place.dart';
 
 part 'edit_place_controller.g.dart';
@@ -11,7 +13,7 @@ part 'edit_place_controller.g.dart';
 // https://codewithandrea.com/articles/async-notifier-mounted-riverpod/
 // I am not in love with the "mounted" shenanigans. Sigh.
 @riverpod
-class EditplaceController extends _$EditplaceController {
+class EditPlaceController extends _$EditPlaceController {
   bool mounted = true;
 
   @override
@@ -21,14 +23,14 @@ class EditplaceController extends _$EditplaceController {
   }
 
   // Invoked to add a new place or edit an existing one.
-  Future<void> updateplace({
+  Future<void> updatePlace({
     required Place place,
     required VoidCallback onSuccess,
   }) async {
     state = const AsyncLoading();
-    placeDatabase placeDatabase = ref.watch(placeDatabaseProvider);
+    PlaceDatabase placeDatabase = ref.watch(placeDatabaseProvider);
     final newState =
-        await AsyncValue.guard(() => placeDatabase.setplace(place));
+        await AsyncValue.guard(() => placeDatabase.setPlace(place));
     if (mounted) {
       state = newState;
     }
@@ -38,14 +40,14 @@ class EditplaceController extends _$EditplaceController {
     }
   }
 
-  Future<void> deleteplace({
+  Future<void> deletePlace({
     required Place place,
     required VoidCallback onSuccess,
   }) async {
     state = const AsyncLoading();
-    placeDatabase placeDatabase = ref.watch(placeDatabaseProvider);
+    PlaceDatabase placeDatabase = ref.watch(placeDatabaseProvider);
     final newState =
-        await AsyncValue.guard(() => placeDatabase.deleteplace(place));
+        await AsyncValue.guard(() => placeDatabase.deletePlace(place));
     if (mounted) {
       state = newState;
     }

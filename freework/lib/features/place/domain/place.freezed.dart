@@ -26,8 +26,8 @@ mixin _$Place {
   String get location => throw _privateConstructorUsedError;
   String get placeType => throw _privateConstructorUsedError;
   String get imagePath => throw _privateConstructorUsedError;
-  String get ownerID => throw _privateConstructorUsedError;
-  String get chapterID => throw _privateConstructorUsedError;
+  String get ownerID =>
+      throw _privateConstructorUsedError; //required String chapterID,
   String get lastUpdate => throw _privateConstructorUsedError;
   List<String> get editorIDs => throw _privateConstructorUsedError;
   List<String> get visitorIDs => throw _privateConstructorUsedError;
@@ -50,7 +50,6 @@ abstract class $PlaceCopyWith<$Res> {
       String placeType,
       String imagePath,
       String ownerID,
-      String chapterID,
       String lastUpdate,
       List<String> editorIDs,
       List<String> visitorIDs});
@@ -76,7 +75,6 @@ class _$PlaceCopyWithImpl<$Res, $Val extends Place>
     Object? placeType = null,
     Object? imagePath = null,
     Object? ownerID = null,
-    Object? chapterID = null,
     Object? lastUpdate = null,
     Object? editorIDs = null,
     Object? visitorIDs = null,
@@ -110,10 +108,6 @@ class _$PlaceCopyWithImpl<$Res, $Val extends Place>
           ? _value.ownerID
           : ownerID // ignore: cast_nullable_to_non_nullable
               as String,
-      chapterID: null == chapterID
-          ? _value.chapterID
-          : chapterID // ignore: cast_nullable_to_non_nullable
-              as String,
       lastUpdate: null == lastUpdate
           ? _value.lastUpdate
           : lastUpdate // ignore: cast_nullable_to_non_nullable
@@ -145,7 +139,6 @@ abstract class _$$PlaceImplCopyWith<$Res> implements $PlaceCopyWith<$Res> {
       String placeType,
       String imagePath,
       String ownerID,
-      String chapterID,
       String lastUpdate,
       List<String> editorIDs,
       List<String> visitorIDs});
@@ -169,7 +162,6 @@ class __$$PlaceImplCopyWithImpl<$Res>
     Object? placeType = null,
     Object? imagePath = null,
     Object? ownerID = null,
-    Object? chapterID = null,
     Object? lastUpdate = null,
     Object? editorIDs = null,
     Object? visitorIDs = null,
@@ -203,10 +195,6 @@ class __$$PlaceImplCopyWithImpl<$Res>
           ? _value.ownerID
           : ownerID // ignore: cast_nullable_to_non_nullable
               as String,
-      chapterID: null == chapterID
-          ? _value.chapterID
-          : chapterID // ignore: cast_nullable_to_non_nullable
-              as String,
       lastUpdate: null == lastUpdate
           ? _value.lastUpdate
           : lastUpdate // ignore: cast_nullable_to_non_nullable
@@ -234,7 +222,6 @@ class _$PlaceImpl implements _Place {
       required this.placeType,
       required this.imagePath,
       required this.ownerID,
-      required this.chapterID,
       required this.lastUpdate,
       final List<String> editorIDs = const [],
       final List<String> visitorIDs = const []})
@@ -258,8 +245,7 @@ class _$PlaceImpl implements _Place {
   final String imagePath;
   @override
   final String ownerID;
-  @override
-  final String chapterID;
+//required String chapterID,
   @override
   final String lastUpdate;
   final List<String> _editorIDs;
@@ -282,7 +268,7 @@ class _$PlaceImpl implements _Place {
 
   @override
   String toString() {
-    return 'Place(id: $id, name: $name, description: $description, location: $location, placeType: $placeType, imagePath: $imagePath, ownerID: $ownerID, chapterID: $chapterID, lastUpdate: $lastUpdate, editorIDs: $editorIDs, visitorIDs: $visitorIDs)';
+    return 'Place(id: $id, name: $name, description: $description, location: $location, placeType: $placeType, imagePath: $imagePath, ownerID: $ownerID, lastUpdate: $lastUpdate, editorIDs: $editorIDs, visitorIDs: $visitorIDs)';
   }
 
   @override
@@ -301,8 +287,6 @@ class _$PlaceImpl implements _Place {
             (identical(other.imagePath, imagePath) ||
                 other.imagePath == imagePath) &&
             (identical(other.ownerID, ownerID) || other.ownerID == ownerID) &&
-            (identical(other.chapterID, chapterID) ||
-                other.chapterID == chapterID) &&
             (identical(other.lastUpdate, lastUpdate) ||
                 other.lastUpdate == lastUpdate) &&
             const DeepCollectionEquality()
@@ -322,7 +306,6 @@ class _$PlaceImpl implements _Place {
       placeType,
       imagePath,
       ownerID,
-      chapterID,
       lastUpdate,
       const DeepCollectionEquality().hash(_editorIDs),
       const DeepCollectionEquality().hash(_visitorIDs));
@@ -350,7 +333,6 @@ abstract class _Place implements Place {
       required final String placeType,
       required final String imagePath,
       required final String ownerID,
-      required final String chapterID,
       required final String lastUpdate,
       final List<String> editorIDs,
       final List<String> visitorIDs}) = _$PlaceImpl;
@@ -371,9 +353,7 @@ abstract class _Place implements Place {
   String get imagePath;
   @override
   String get ownerID;
-  @override
-  String get chapterID;
-  @override
+  @override //required String chapterID,
   String get lastUpdate;
   @override
   List<String> get editorIDs;

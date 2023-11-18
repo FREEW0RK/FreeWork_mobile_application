@@ -1,34 +1,62 @@
+import 'package:firebase_ui_auth/firebase_ui_auth.dart' hide UserAvatar;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../user/domain/user.dart';
-import '../help/presentation/help_view.dart';
-import '../home_view.dart';
-import '../settings/presentation/settings_view.dart';
-import '../user/presentation/user_avatar.dart';
+
+import 'fw_error.dart';
+import 'fw_loading.dart';
+import 'all_data_provider.dart';
+
+
+import 'user/domain/user.dart';
+import 'user/domain/user_collection.dart';
+import 'user/presentation/user_avatar.dart';
+import 'user/presentation/users_view.dart';
+import 'authentication/presentation/login_view_video.dart';
+
+import 'settings/presentation/settings_view.dart';
+
+import 'help/presentation/help_view.dart';
+import 'home_view.dart';
+import 'settings/presentation/settings_view.dart';
+import 'user/presentation/user_avatar.dart';
 import 'package:freework/features/user/data/user_providers.dart';
+import 'place/presentation/places_view.dart';
 
-/* import '../pages/chapters/chapters_view.dart';
-import '../pages/users/users_view.dart';
-import '../pages/outcomes/outcomes_view.dart';
-import '../pages/seeds/seeds_view.dart';
-import '../pages/discussions/discussions_view.dart'; */
-//import '../pages/gardens/gardens_view.dart';
+/* 
+import 'outcome/presentation/outcomes_view.dart';
+import 'seed/presentation/seeds_view.dart';
+ */
 
 
+
+/// Builds the drop-down Drawer with the menu of top-level pages.
 class DrawerView extends ConsumerWidget {
   const DrawerView({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final User user = ref.watch(userProvider);
-    final String currentUserID = ref.watch(currentUserIDProvider);
-    User user = user.getUser(currentUserID);
+  build(BuildContext context, WidgetRef ref) {
+    final AsyncValue<AllData> asyncAllData = ref.watch(allDataProvider);
+    return asyncAllData.when(
+        data: (allData) => _build(
+            context: context,
+            currentUserID: allData.currentUserID,
+            users: allData.users),
+        loading: () => const FWLoading(),
+        error: (error, st) => FWError(error.toString(), st.toString()));
+  }
+
+  Widget _build(
+      {required BuildContext context,
+      required List<User> users,
+      required String currentUserID}) {
+    UserCollection userCollection = UserCollection(users);
+    User user = userCollection.getUser(currentUserID);
     return Drawer(
       child: ListView(
         children: [
           UserAccountsDrawerHeader(
             accountName: Text(user.name),
-            accountEmail: Text(user.email),
+            accountEmail: Text(user.id),
             currentAccountPicture: UserAvatar(userID: user.id),
             decoration: BoxDecoration(
               color: Theme.of(context).primaryColor,

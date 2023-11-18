@@ -21,7 +21,7 @@ final placeDatabaseProvider = AutoDisposeProvider<PlaceDatabase>.internal(
 );
 
 typedef PlaceDatabaseRef = AutoDisposeProviderRef<PlaceDatabase>;
-String _$placeHash() => r'964ac055f3a2550e50cc6fd2ca73be1f3143467c';
+String _$placeHash() => r'16c18450a0aee18d7375064d91e2f2fc278e70f0';
 
 /// See also [place].
 @ProviderFor(place)

@@ -1,15 +1,17 @@
  import 'package:flutter/material.dart';
-
 import 'package:video_player/video_player.dart';
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-
 import '../../user/domain/user.dart';
 import 'package:freework/features/user/data/user_providers.dart';
 
+
+import 'package:firebase_ui_auth/firebase_ui_auth.dart' hide ForgotPasswordView;
+import '../../home_view.dart';
+import 'decorations.dart';
+import 'forgot_password_view.dart';
+import 'verify_email_view.dart';
 
 // PROVIDER 
 // Define a Riverpod provider for the video controller.
@@ -54,9 +56,9 @@ class _SigninViewState extends State<SigninView> {
       });
   } */
  
-
   @override
   Widget build(BuildContext context, WidgetRef ref){ 
+
     // Read the video controller from the provider.
     final videoController = ref.read(videoControllerProvider);
     // Initialize the video controller.
@@ -65,9 +67,72 @@ class _SigninViewState extends State<SigninView> {
       videoController.setLooping(true);
     });
 
+    return SignInScreen(
+          actions: [
+            ForgotPasswordAction((context, email) {
+              Navigator.pushNamed(
+                context,
+                ForgotPasswordView.routeName,
+                arguments: {'email': email},
+              );
+            }),
+            AuthStateChangeAction<SignedIn>((context, state) {
+              if (!state.user!.emailVerified) {
+                Navigator.pushNamed(context, VerifyEmailView.routeName);
+              } else {
+                Navigator.pushReplacementNamed(context, HomeView.routeName);
+              }
+            }),
+            AuthStateChangeAction<UserCreated>((context, state) {
+              if (!state.credential.user!.emailVerified) {
+                Navigator.pushNamed(context, VerifyEmailView.routeName);
+              } else {
+                Navigator.pushReplacementNamed(context, HomeView.routeName);
+              }
+            }),
+            AuthStateChangeAction<CredentialLinked>((context, state) {
+              if (!state.user.emailVerified) {
+                Navigator.pushNamed(context, VerifyEmailView.routeName);
+              } else {
+                Navigator.pushReplacementNamed(context, HomeView.routeName);
+              }
+            }),
+          ],
+          styles: const {
+            EmailFormStyle(signInButtonVariant: ButtonVariant.filled),
+          },
+          headerBuilder: headerImage('assets/images/freeworklogoearthgrinsgesicht.jpg'),
+          sideBuilder: sideImage('assets/images/freeworklogoearthgrinsgesicht.jpg'),
+          subtitleBuilder: (context, action) {
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 8),
+              child: Text(
+                action == AuthAction.signIn
+                    ? 'EXPLORE EARTH - ANYTIME - Please sign in.'
+                    : 'New EXPLORER - create an account.',
+              ),
+            );
+          },
+          footerBuilder: (context, action) {
+            return Center(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 16),
+                child: Text(
+                  action == AuthAction.signIn
+                      ? 'By signing in, you agree to our terms and conditions.'
+                      : 'By registering, you agree to our terms and conditions.',
+                  style: const TextStyle(color: Colors.grey),
+                ),
+              ),
+            );
+          },
+        );
+  }
+}
+
+
+/* 
   final formKey = GlobalKey<FormBuilderState>();
-
-
     return Scaffold(
       body: SafeArea(
         child: ListView(
@@ -179,7 +244,7 @@ class _SigninViewState extends State<SigninView> {
 
 
 
-
+ */
 
 
 

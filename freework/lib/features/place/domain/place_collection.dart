@@ -18,7 +18,8 @@ class PlaceCollection {
     return _places.map((data) => data.id).toList();
   }
 
-  List<String> getAssociatedPlaceIDs({String? userID, String? areaID}) {
+  List<String> getAssociatedPlaceIDs({String? userID//, String? areaID
+  }) {
     if (userID != null) {
       return getPlaceIDs()
           .where((placeID) => _userIsAssociated(placeID, userID))
@@ -32,11 +33,11 @@ class PlaceCollection {
     return [];
   }
     
-  List<Place> getAssociatedPlaces({String? userID//, String? chapterID
+  List<Place> getAssociatedPlaces({String? userID //, String? chapterID
   }) {
     if (userID != null) {
       return _places
-          .where((Place) => _userIsAssociated(Place.id, userID))
+          .where((place) => _userIsAssociated(place.id, userID))
           .toList();
     }
    /*  if (chapterID != null) {

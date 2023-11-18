@@ -9,11 +9,20 @@ import 'package:freework/features/place/presentation/form-fields/photo_field.dar
 import 'package:freework/features/place/presentation/form-fields/reset_button.dart';
 import 'package:freework/features/place/presentation/form-fields/location_field.dart';
 import 'package:freework/features/place/presentation/form-fields/placetype_dropdown_field.dart';
+import 'form-fields/description_field.dart';
+import 'form-fields/place_name_field.dart';
+import 'form-fields/utils.dart';
+import 'form-fields/visitors_field.dart';
+
+
 
 
 import '../../help/presentation/help_button.dart';
 //import '../../data_model/chapter_db.dart';
 import '../domain/place.dart';
+import '../domain/place_collection.dart';
+import 'edit_place_controller.dart';
+
 
 import '../../fw_error.dart';
 import '../../fw_loading.dart';
@@ -21,14 +30,9 @@ import '../../all_data_provider.dart';
 /* import '../../chapter/domain/chapter.dart';
 import '../../chapter/domain/chapter_collection.dart'; */
 import '../../global_snackbar.dart';
+
 import '../../user/domain/user.dart';
 import '../../user/domain/user_collection.dart';
-import '../domain/place_collection.dart';
-
-
-import 'form-fields/description_field.dart';
-import 'form-fields/place_name_field.dart';
-import 'form-fields/utils.dart';
 
 import 'places_view.dart';
 
@@ -56,7 +60,7 @@ class AddPlaceView extends ConsumerWidget {
     data: (allData) => _build(
         context: context,
         currentUserID: allData.currentUserID,
-        place: allData.place,
+        places: allData.places,
         users: allData.users,
         //chapters: allData.chapters,
         ref: ref),
@@ -69,13 +73,13 @@ class AddPlaceView extends ConsumerWidget {
   Widget _build(
       {required BuildContext context,
       required String currentUserID,
-      required List<Place> gardens,
+      required List<Place> places,
       //required List<Chapter> chapters,
       required List<User> users,
       required WidgetRef ref}) {
     //ChapterCollection chapterCollection = ChapterCollection(chapters);
     //List<String> chapterNames = chapterCollection.getChapterNames();
-    PlaceCollection placeCollection = PlaceCollection(gardens);
+    PlaceCollection placeCollection = PlaceCollection(places);
     UserCollection userCollection = UserCollection(users);
 
 
@@ -93,6 +97,8 @@ class AddPlaceView extends ConsumerWidget {
       String editorsString = _editorsFieldKey.currentState?.value ?? '';
       List<String> editorIDs = usernamesToIDs(userCollection, editorsString);
       String visitorsString = _visitorsFieldKey.currentState?.value ?? '';
+      int numPlaces = placeCollection.size();
+
       List<String> visitorIDs = usernamesToIDs(userCollection, visitorsString);
       String id = 'Sick Place-${(numPlaces + 1).toString().padLeft(3, '0')}';
       String imagePath = 'assets/images/$imageFileName';
@@ -122,7 +128,7 @@ class AddPlaceView extends ConsumerWidget {
       _formKey.currentState?.reset();
     }
 
-  Widget addGardenForm() => ListView(
+  Widget addPlaceForm() => ListView(
           padding: const EdgeInsets.symmetric(horizontal: 24.0),
           children: [
             Column(

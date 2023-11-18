@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
+import '../../global_snackbar.dart';
+import '../../fw_error.dart';
+import '../../fw_loading.dart';
+import '../../all_data_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../common/drawer_view.dart';
-import 'places_summary_view.dart';
+
+import '../../drawer_view.dart';
+import 'place_summary_view.dart';
 import '../../help/presentation/help_button.dart';
 
 import 'package:freework/features/user/data/user_providers.dart';
-
 import 'add_place_view.dart';
+
+import '../domain/place.dart';
+import '../domain/place_collection.dart';
 
 const pageSpecification = '''
 # Gardens Page Specification
@@ -46,17 +53,29 @@ class PlaceView extends ConsumerWidget {
     super.key,
   });
 
-  final String title = 'Nice Spots';
+  //final String title = 'Nice Spots';
   static const routeName = '/places';
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final Place place = ref.watch(placesProvider);
-    final String currentUserID = ref.watch(currentUserIDProvider);
+    final AsyncValue<AllData> asyncAllData = ref.watch(allDataProvider);
+    return asyncAllData.when(
+        data: (allData) => _build(
+            context: context,
+            currentUserID: allData.currentUserID,
+            places: allData.places),
+        loading: () => const FWLoading(),
+        error: (error, st) => FWError(error.toString(), st.toString()));
+  }
+
+  Widget _build(
+      {required BuildContext context,
+      required String currentUserID,
+      required List<Place> places}) {
+    PlaceCollection placeCollection = PlaceCollection(places);
     return Scaffold(
       drawer: const DrawerView(),
       appBar: AppBar(
-        title: const Text('Nice Spots'),
+        title: Text('Nice Spots (${placeCollection.size()})'),
         actions: const [HelpButton(routeName: PlaceView.routeName)],
       ),
       floatingActionButton: FloatingActionButton(
@@ -69,10 +88,9 @@ class PlaceView extends ConsumerWidget {
       body: Padding(
           padding: const EdgeInsets.all(10.0),
           child: ListView(
-              children: place
-                  .getAssociatedPlaceIDs(userID: currentUserID)
-                  .map((placeID) => PlaceSummaryView(placeID: placeID))
-                  .toList()
+              children: placeCollection
+                  .getAssociatedPlaces(userID: currentUserID)
+                  .map((place) => PlaceSummaryView(place: place))
                   .toList())),
       bottomNavigationBar: const BottomAppBar(
         shape: CircularNotchedRectangle(),

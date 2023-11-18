@@ -14,7 +14,6 @@ _$PlaceImpl _$$PlaceImplFromJson(Map<String, dynamic> json) => _$PlaceImpl(
       placeType: json['placeType'] as String,
       imagePath: json['imagePath'] as String,
       ownerID: json['ownerID'] as String,
-      chapterID: json['chapterID'] as String,
       lastUpdate: json['lastUpdate'] as String,
       editorIDs: (json['editorIDs'] as List<dynamic>?)
               ?.map((e) => e as String)
@@ -35,7 +34,6 @@ Map<String, dynamic> _$$PlaceImplToJson(_$PlaceImpl instance) =>
       'placeType': instance.placeType,
       'imagePath': instance.imagePath,
       'ownerID': instance.ownerID,
-      'chapterID': instance.chapterID,
       'lastUpdate': instance.lastUpdate,
       'editorIDs': instance.editorIDs,
       'visitorIDs': instance.visitorIDs,
