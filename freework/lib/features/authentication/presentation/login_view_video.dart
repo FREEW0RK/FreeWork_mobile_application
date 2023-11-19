@@ -56,12 +56,12 @@ class _SigninViewState extends State<SigninView> {
   Widget build(BuildContext context, WidgetRef ref){ 
 
     // Read the video controller from the provider.
-    final videoController = ref.read(videoControllerProvider);
+ /*    final videoController = ref.read(videoControllerProvider);
     // Initialize the video controller.
     videoController.initialize().then((_) {
       videoController.play();
       videoController.setLooping(true);
-    });
+    }); */
 
     return SignInScreen(
           actions: [
@@ -98,7 +98,7 @@ class _SigninViewState extends State<SigninView> {
             EmailFormStyle(signInButtonVariant: ButtonVariant.filled),
           },
           headerBuilder: headerImage('assets/images/freeworklogoearthgrinsgesicht.jpg'),
-          sideBuilder: sideImage('assets/images/freeworklogoearthgrinsgesicht.jpg'),
+          //sideBuilder: sideImage('assets/images/freeworklogoearthgrinsgesicht.jpg'),
           subtitleBuilder: (context, action) {
             return Padding(
               padding: const EdgeInsets.only(bottom: 8),

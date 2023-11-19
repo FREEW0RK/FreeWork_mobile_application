@@ -63,7 +63,6 @@ class _SigninViewState extends State<SigninView> {
             ElevatedButton(
                 onPressed: () {
                   // Eventually: pushReplacementNamed
-                  
                   Navigator.pushReplacementNamed(context, '/poll');
                 },
                 child: const Text('Sign in')),

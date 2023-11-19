@@ -47,6 +47,8 @@ Future<bool> verifyInitialData() async {
   await User.checkInitialData();
   return true;
 }
+
+
 //GRADLE DEBUG COMMAND
 ////https://stackoverflow.com/questions/64734646/failed-to-delete-some-children-this-might-happen-because-a-process-has-files-op
 
@@ -114,7 +116,7 @@ class MyApp extends ConsumerWidget {
                 case StartPage.routeName:
                     return const StartPage();
                 default:
-                    return const HomeView();
+                    return const StartPage();
                 }
               },
             );
