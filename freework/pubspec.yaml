@@ -70,6 +70,8 @@ flutter:
     - assets/map_styles/
     - assets/theme/
     - assets/initialData/
+    - assets/initialData/places.json
+    - assets/initialData/users.json
 
     
     
