@@ -25,7 +25,6 @@ import 'package:freework/features/place/presentation/add_place_view.dart';
 import 'package:freework/features/place/presentation/edit_place_view.dart';
 
 
-
 /* import 'features/chapter/domain/chapter.dart';
 import 'features/chapter/presentation/chapters_view.dart';
 import 'features/discussion/presentation/discussions_view.dart';
@@ -35,10 +34,6 @@ import 'features/page_not_found_view.dart';
 import 'features/seed/presentation/seeds_view.dart'; */
 
 import 'features/place/domain/place.dart';
-
-
-
-
 import 'features/user/domain/user.dart';
 import 'firebase_options.dart';
 
@@ -128,10 +123,6 @@ class MyApp extends ConsumerWidget {
 
   }
 }
-
-
-
-
 
 
 
