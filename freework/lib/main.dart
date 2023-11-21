@@ -57,7 +57,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   FirebaseUIAuth.configureProviders([EmailAuthProvider()]);
-  await verifyInitialData();
+  //await verifyInitialData();
   final themeStr = await rootBundle.loadString('assets/theme/appainter_theme_green1.json');
   final themeJson = jsonDecode(themeStr);
   final theme = ThemeDecoder.decodeThemeData(themeJson)!;
