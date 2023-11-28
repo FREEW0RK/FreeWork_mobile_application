@@ -37,7 +37,9 @@ class PlaceSummaryUsersView extends ConsumerWidget {
       required List<Place> places}) {
     double padding = 10;
     Place place = PlaceCollection(places).getPlace(placeID);
-    return Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+    return  SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
       UserLabeledAvatar(
           userID: place.ownerID, label: 'Owner', rightPadding: padding),
       ...place.editorIDs
@@ -48,6 +50,8 @@ class PlaceSummaryUsersView extends ConsumerWidget {
           .map((editorID) => UserLabeledAvatar(
               userID: editorID, label: 'Viewer', rightPadding: padding))
           .toList(),
-    ]);
+    ]
+    ),
+    );
   }
 }
