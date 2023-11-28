@@ -1,5 +1,8 @@
+import 'dart:collection';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:freework/features/map/presentation/main_map.dart';
 import 'drawer_view.dart';
 import 'help/presentation/help_button.dart';
 import 'place/domain/place.dart';
@@ -81,6 +84,14 @@ class _HomeViewState extends ConsumerState<HomeView> {
         ),
         
       },
+         1: {
+        'title': const Text('Map'),
+        'body':  const MainMap(),
+        'navItem': BottomNavigationBarItem(
+          label: 'My FW Map',
+          icon: const Icon(Icons.location_pin),
+        ),
+      },
     };
 /* 
     final Map pages = {
@@ -124,7 +135,7 @@ class _HomeViewState extends ConsumerState<HomeView> {
         type: BottomNavigationBarType.fixed, // needed when more than 3 items
         items: [
           pages[0]?['navItem'],
-          pages[0]?['navItem'],
+          pages[1]?['navItem'],
           pages[0]?['navItem'],
         ],
         currentIndex: _selectedIndex,

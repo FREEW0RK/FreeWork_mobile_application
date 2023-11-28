@@ -9,7 +9,7 @@
       "lastUpdate": "11/15/22",
       "ownerID": "charing@hawaii.edu",
       "editorIDs": ["charing@hawaii.edu"],
-      "visitorIDs": ["user-003", "user-005"]
+      "visitorIDs": ["charing@hawaii.edu", "charing@hawaii.edu"]
   },
   {
       "id": "places-002",
@@ -20,8 +20,8 @@
       "location": "21.3003692300479,-157.81494475453513",
       "lastUpdate": "10/10/22",
       "ownerID": "charing@hawaii.edu",
-      "editorIDs": ["user-002"],
-      "visitorIDs": ["user-001", "user-005"]
+      "editorIDs": ["charing@hawaii.edu"],
+      "visitorIDs": ["charing@hawaii.edu", "charing@hawaii.edu"]
   },
   {
       "id": "places-003",
@@ -33,6 +33,6 @@
       "lastUpdate": "8/10/22",
       "ownerID": "charing@hawaii.edu",
       "editorIDs": ["charing@hawaii.edu"],
-      "visitorIDs": ["user-005"]
+      "visitorIDs": ["charing@hawaii.edu"]
   }
 ]
