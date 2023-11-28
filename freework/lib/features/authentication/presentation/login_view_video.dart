@@ -12,7 +12,7 @@ import 'verify_email_view.dart';
 // PROVIDER 
 // Define a Riverpod provider for the video controller.
 final videoControllerProvider = Provider<VideoPlayerController>((ref) {
-  final controller = VideoPlayerController.asset('assets/videos/1080p_places.mov');
+  final controller = VideoPlayerController.asset('assets/videos/1080p_places.mp4');
   ref.onDispose(() {
     controller.dispose();
   });

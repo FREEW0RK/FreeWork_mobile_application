@@ -1,43 +1,38 @@
 [
   {
-    "id": "user-001",
     "name": "John Smith",
     "username": "@jsmith",
     "location": [21.300127557914898, -157.81483315187523],
-    "email": "john.smith@example.com",
+    "id": "john.smith@example.com",
     "imagePath": "assets/images/freeworklogoearthgrinsgesicht.jpg",
     "initials": "JS"
   },
   {
-    "id": "user-002",
     "name": "Mary Johnson",
     "username": "@maryj",
     "location": [21.300127557914898, -157.8148331518752555],
-    "email": "mary.johnson@example.com",
+    "id": "mary.johnson@example.com",
     "initials": "MJ"
   },
   {
-    "id": "user-003",
     "name": "David Brown",
     "username": "@dbrown",
     "location": [21.300127557914898, -157.81483315155523],
-    "email": "david.brown@example.com",
+    "id": "david.brown@example.com",
     "initials": "DB"
   },
   {
-    "id": "user-004",
     "name": "Sarah Williams",
     "username": "@sarahw",
     "location": [21.300127557914898, -157.8148331554487523],
-    "email": "sarah.williams@example.com",
+    "id": "sarah.williams@example.com",
     "initials": "SW"
   },
   {
-    "id": "user-005",
     "name": "Christoph Haring",
     "username": "@CHaring",
     "location": [21.300127557914898, -157.6000560453],
-    "email": "CHaring@hawaii.edu",
+    "id": "CHaring@hawaii.edu",
     "imagePath": "assets/images/freeworklogoearthgrinsgesicht.jpg",
     "initials": "CH"
   }

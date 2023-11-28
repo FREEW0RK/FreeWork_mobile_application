@@ -29,7 +29,7 @@ class Place with _$Place {
   // Test that the json file can be converted into entities.
   static Future<List<Place>> checkInitialData() async {
     String content =
-        await rootBundle.loadString("initialData/places.json");
+        await rootBundle.loadString("assets/images/places.json");
     List<dynamic> initialData = json.decode(content);
     return initialData.map((jsonData) => Place.fromJson(jsonData)).toList();
   }

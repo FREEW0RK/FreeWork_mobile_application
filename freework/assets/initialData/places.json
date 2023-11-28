@@ -7,8 +7,8 @@
       "imagePath": "assets/images/diamond.png",
       "location": "21.3003692300479 -157.81494475453513",
       "lastUpdate": "11/15/22",
-      "ownerID": "user-002",
-      "editorIDs": ["user-001"],
+      "ownerID": "charing@hawaii.edu",
+      "editorIDs": ["charing@hawaii.edu"],
       "visitorIDs": ["user-003", "user-005"]
   },
   {
@@ -19,6 +19,7 @@
       "imagePath": "assets/images/diamond.png",
       "location": "21.3003692300479,-157.81494475453513",
       "lastUpdate": "10/10/22",
+      "ownerID": "charing@hawaii.edu",
       "editorIDs": ["user-002"],
       "visitorIDs": ["user-001", "user-005"]
   },
@@ -30,9 +31,8 @@
       "imagePath": "assets/images/diamond.png",
       "location": "2211 ALA WAI BLVD 96815 Honolulu",
       "lastUpdate": "8/10/22",
-      "editorIDs": ["user-004"],
-      "visitorIDs": ["user-005"],
-      "ownerID": "user-003"
+      "ownerID": "charing@hawaii.edu",
+      "editorIDs": ["charing@hawaii.edu"],
+      "visitorIDs": ["user-005"]
   }
 ]
-

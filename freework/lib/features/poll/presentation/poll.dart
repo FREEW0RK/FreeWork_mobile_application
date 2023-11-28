@@ -161,7 +161,7 @@ class _NextPageState extends State<NextPage> {
               ElevatedButton(
                 onPressed: () {
                   // Finish the poll and navigate back to the poll page
-                  Navigator.pushReplacementNamed(context,"/main_map");
+                  Navigator.pushReplacementNamed(context,"/home");
                 },
                 child: const Text('Finish Poll'),
               ),

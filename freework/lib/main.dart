@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_ui_auth/firebase_ui_auth.dart' hide ForgotPasswordView;
+import 'package:freework/features/authentication/presentation/forgot_password_view.dart';
 
 
 import 'package:json_theme/json_theme.dart';
@@ -53,12 +54,12 @@ Future<bool> verifyInitialData() async {
 ////https://stackoverflow.com/questions/64734646/failed-to-delete-some-children-this-might-happen-because-a-process-has-files-op
 
 void main() async {
-  // Find and load the Appainter-generated theme
+  // Find and load the Appainter-generated  
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   FirebaseUIAuth.configureProviders([EmailAuthProvider()]);
-  //await verifyInitialData();
   final themeStr = await rootBundle.loadString('assets/theme/appainter_theme_green1.json');
+  await verifyInitialData();
   final themeJson = jsonDecode(themeStr);
   final theme = ThemeDecoder.decodeThemeData(themeJson)!;
   runApp(const ProviderScope(child:MyApp()));
@@ -102,21 +103,24 @@ class MyApp extends ConsumerWidget {
                 case PollingPage.routeName:
                     return const PollingPage();
                 case SignupView.routeName:
-                    return const SignupView();     
+                    return const SignupView();
+                case SigninView.routeName:
+                    return const SigninView();
+                case ForgotPasswordView.routeName:
+                    return const ForgotPasswordView();       
                 case PlaceView.routeName:
                     return const PlaceView();
                 case AddPlaceView.routeName:
                     return AddPlaceView();
                 case EditPlaceView.routeName:
                     return EditPlaceView();
-                case SigninView.routeName:
-                    return const SigninView();
                 case HomeView.routeName:
                     return const HomeView();
                 case StartPage.routeName:
                     return const StartPage();
                 default:
                     return const StartPage();
+                    
                 }
               },
             );

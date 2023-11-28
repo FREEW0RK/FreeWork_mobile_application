@@ -34,7 +34,7 @@ class _StartPageState extends State<StartPage> {
 @override
 void initState() {
   super.initState();
-  _controller = VideoPlayerController.asset('assets/videos/1080p_places.mov')
+  _controller = VideoPlayerController.asset('assets/videos/1080p_places.mp4')
     ..initialize().then((_) {
       setState(() {
         // Ensure the first frame is shown

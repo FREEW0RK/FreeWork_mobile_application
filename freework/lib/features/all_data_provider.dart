@@ -32,6 +32,48 @@ class AllData {
   final String currentUserID;
 }
 
+
+
+/* @riverpod
+Future<AllData> allData(AllDataRef ref) async {
+  try {
+    /* final chapters = await ref.watch(chaptersProvider.future);
+    final news = await ref.watch(newsProvider.future); */
+
+    final places = await ref.watch(placeProvider.future);
+    final users = await ref.watch(usersProvider.future);
+
+    // Use null-aware operator to provide a default value for currentUserID
+    final currentUserID = ref.watch(currentUserIDProvider) ?? 'user-005';
+
+  
+
+    // Perform null checks on the fetched data
+    /* if (chapters == null || news == null || places == null || users == null) {
+      // Handle the case where any of the data is null
+      throw Exception('Failed to fetch all data');
+    } */
+
+    if (places == null || users == null) {
+      // Handle the case where any of the data is null
+      throw Exception('Failed to fetch all data');
+    }
+
+    return AllData(
+      /* chapters: chapters,
+      news: news, */
+      places: places,
+      users: users,
+      currentUserID: currentUserID,
+    );
+
+  } catch (e) {
+    // Handle the error, log, or rethrow if necessary
+    print('Error fetching all data: $e');
+    rethrow;
+  }
+} */
+
 @riverpod
 Future<AllData> allData(AllDataRef ref) async {
   /* final chapters = ref.watch(chaptersProvider.future);
@@ -48,3 +90,4 @@ Future<AllData> allData(AllDataRef ref) async {
       users: await users,
       currentUserID: currentUserID);
 }
+ 
