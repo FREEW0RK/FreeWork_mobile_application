@@ -3,6 +3,9 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import 'package:flutter/services.dart' show rootBundle;
 
+
+
+
 class MainMap extends StatefulWidget {
   const MainMap({super.key});
 
@@ -17,12 +20,7 @@ class _MainMapState extends State<MainMap> {
   final LatLng _initialPosition = const LatLng(21.300730704104364, -157.81481745653235); // Initial map position
   late String _mapStyle;
 
-
-
 BitmapDescriptor markerIcon = BitmapDescriptor.defaultMarker;
-
-
-
 
 
 
@@ -36,6 +34,8 @@ void initState() {
   });
 }
 
+
+
 void addCustomIcon() {
   BitmapDescriptor.fromAssetImage(
           const ImageConfiguration(), "/assets/images/diamond.png")
@@ -48,7 +48,12 @@ void addCustomIcon() {
   );
 }
 
+ void _onMapTap(LatLng position) {
+    // Handle the tapped location
+    print('Tapped location: $position');
 
+    // Use the position as needed, e.g., store in a variable or pass to another function
+  }
 
 
   @override

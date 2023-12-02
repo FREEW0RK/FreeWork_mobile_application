@@ -1,5 +1,5 @@
-import 'dart:ffi';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'edit_place_controller.dart';
@@ -100,7 +100,7 @@ class EditPlaceView extends ConsumerWidget {
       // Valid so update the garden data.
       String name = _nameFieldKey.currentState?.value;
       String description = _descriptionFieldKey.currentState?.value;
-      List<double> location = _locationFieldKey.currentState?.value;
+      GeoPoint location = _locationFieldKey.currentState?.value;
       String placeType = _placeTypeFieldKey.currentState?.value;
     /*   String chapterID =
           chapterDB.getChapterIDFromName(_chapterFieldKey.currentState?.value); */
@@ -190,7 +190,7 @@ class EditPlaceView extends ConsumerWidget {
 
   return Scaffold(
       appBar: AppBar(
-        title: const Text('Edit Garden'),
+        title: const Text('Edit Place'),
         actions: const [HelpButton(routeName: EditPlaceView.routeName)],
       ),
       body: asyncUpdate.when(

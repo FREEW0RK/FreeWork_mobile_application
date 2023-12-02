@@ -14,16 +14,17 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Place _$PlaceFromJson(Map<String, dynamic> json) {
+/* Place _$PlaceFromJson(Map<String, dynamic> json) {
   return _Place.fromJson(json);
 }
-
+ */
 /// @nodoc
 mixin _$Place {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
-  List<double> get location => throw _privateConstructorUsedError;
+  @GeoPointConverter()
+  GeoPoint get location => throw _privateConstructorUsedError;
   String get placeType => throw _privateConstructorUsedError;
   String get imagePath => throw _privateConstructorUsedError;
   String get ownerID =>
@@ -46,7 +47,7 @@ abstract class $PlaceCopyWith<$Res> {
       {String id,
       String name,
       String description,
-      List<double> location,
+      @GeoPointConverter() GeoPoint location,
       String placeType,
       String imagePath,
       String ownerID,
@@ -95,7 +96,7 @@ class _$PlaceCopyWithImpl<$Res, $Val extends Place>
       location: null == location
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
-              as List<double>,
+              as GeoPoint,
       placeType: null == placeType
           ? _value.placeType
           : placeType // ignore: cast_nullable_to_non_nullable
@@ -135,7 +136,7 @@ abstract class _$$PlaceImplCopyWith<$Res> implements $PlaceCopyWith<$Res> {
       {String id,
       String name,
       String description,
-      List<double> location,
+      @GeoPointConverter() GeoPoint location,
       String placeType,
       String imagePath,
       String ownerID,
@@ -180,9 +181,9 @@ class __$$PlaceImplCopyWithImpl<$Res>
           : description // ignore: cast_nullable_to_non_nullable
               as String,
       location: null == location
-          ? _value._location
+          ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
-              as List<double>,
+              as GeoPoint,
       placeType: null == placeType
           ? _value.placeType
           : placeType // ignore: cast_nullable_to_non_nullable
@@ -213,20 +214,19 @@ class __$$PlaceImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$PlaceImpl implements _Place {
+class _$PlaceImpl with DiagnosticableTreeMixin implements _Place {
   const _$PlaceImpl(
       {required this.id,
       required this.name,
       required this.description,
-      required final List<double> location,
+      @GeoPointConverter() required this.location,
       required this.placeType,
       required this.imagePath,
       required this.ownerID,
       required this.lastUpdate,
       final List<String> editorIDs = const [],
       final List<String> visitorIDs = const []})
-      : _location = location,
-        _editorIDs = editorIDs,
+      : _editorIDs = editorIDs,
         _visitorIDs = visitorIDs;
 
   factory _$PlaceImpl.fromJson(Map<String, dynamic> json) =>
@@ -238,14 +238,9 @@ class _$PlaceImpl implements _Place {
   final String name;
   @override
   final String description;
-  final List<double> _location;
   @override
-  List<double> get location {
-    if (_location is EqualUnmodifiableListView) return _location;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_location);
-  }
-
+  @GeoPointConverter()
+  final GeoPoint location;
   @override
   final String placeType;
   @override
@@ -274,8 +269,25 @@ class _$PlaceImpl implements _Place {
   }
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'Place(id: $id, name: $name, description: $description, location: $location, placeType: $placeType, imagePath: $imagePath, ownerID: $ownerID, lastUpdate: $lastUpdate, editorIDs: $editorIDs, visitorIDs: $visitorIDs)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'Place'))
+      ..add(DiagnosticsProperty('id', id))
+      ..add(DiagnosticsProperty('name', name))
+      ..add(DiagnosticsProperty('description', description))
+      ..add(DiagnosticsProperty('location', location))
+      ..add(DiagnosticsProperty('placeType', placeType))
+      ..add(DiagnosticsProperty('imagePath', imagePath))
+      ..add(DiagnosticsProperty('ownerID', ownerID))
+      ..add(DiagnosticsProperty('lastUpdate', lastUpdate))
+      ..add(DiagnosticsProperty('editorIDs', editorIDs))
+      ..add(DiagnosticsProperty('visitorIDs', visitorIDs));
   }
 
   @override
@@ -287,7 +299,8 @@ class _$PlaceImpl implements _Place {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            const DeepCollectionEquality().equals(other._location, _location) &&
+            (identical(other.location, location) ||
+                other.location == location) &&
             (identical(other.placeType, placeType) ||
                 other.placeType == placeType) &&
             (identical(other.imagePath, imagePath) ||
@@ -308,7 +321,7 @@ class _$PlaceImpl implements _Place {
       id,
       name,
       description,
-      const DeepCollectionEquality().hash(_location),
+      location,
       placeType,
       imagePath,
       ownerID,
@@ -335,7 +348,7 @@ abstract class _Place implements Place {
       {required final String id,
       required final String name,
       required final String description,
-      required final List<double> location,
+      @GeoPointConverter() required final GeoPoint location,
       required final String placeType,
       required final String imagePath,
       required final String ownerID,
@@ -352,7 +365,8 @@ abstract class _Place implements Place {
   @override
   String get description;
   @override
-  List<double> get location;
+  @GeoPointConverter()
+  GeoPoint get location;
   @override
   String get placeType;
   @override

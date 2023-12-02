@@ -4,6 +4,8 @@ import '../../../repositories/firestore/firestore_path.dart';
 import '../../../repositories/firestore/firestore_service.dart';
 import '../domain/place.dart';
 
+
+
 /// Provides access to the Firestore database storing [Place] documents.
 class PlaceDatabase {
   PlaceDatabase(this.ref);

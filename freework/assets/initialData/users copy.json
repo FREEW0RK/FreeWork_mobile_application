@@ -1,0 +1,39 @@
+[
+  {
+    "name": "John Smith",
+    "username": "@jsmith",
+    "location": [21.300127557914898, -157.81483315187523],
+    "id": "john.smith@example.com",
+    "imagePath": "assets/images/freeworklogoearthgrinsgesicht.jpg",
+    "initials": "JS"
+  },
+  {
+    "name": "Mary Johnson",
+    "username": "@maryj",
+    "location": [21.300127557914898, -157.8148331518752555],
+    "id": "mary.johnson@example.com",
+    "initials": "MJ"
+  },
+  {
+    "name": "David Brown",
+    "username": "@dbrown",
+    "location": [21.300127557914898, -157.81483315155523],
+    "id": "david.brown@example.com",
+    "initials": "DB"
+  },
+  {
+    "name": "Sarah Williams",
+    "username": "@sarahw",
+    "location": [21.300127557914898, -157.8148331554487523],
+    "id": "sarah.williams@example.com",
+    "initials": "SW"
+  },
+  {
+    "name": "Christoph Haring",
+    "username": "@CHaring",
+    "location": [21.300127557914898, -157.6000560453],
+    "id": "CHaring@hawaii.edu",
+    "imagePath": "assets/images/freeworklogoearthgrinsgesicht.jpg",
+    "initials": "CH"
+  }
+]

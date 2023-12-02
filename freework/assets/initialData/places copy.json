@@ -5,14 +5,11 @@
       "description": "Outdoor Workplaces in front of Natural Science Building with shed and electricity",
       "placeType": "public",
       "imagePath": "assets/images/diamond.png",
-      "location": {
-        "latitude": 21.3,
-        "longitude": -157.81
-      },
+      "location": "21.3003692300479 -157.81494475453513",
       "lastUpdate": "11/15/22",
       "ownerID": "charing@hawaii.edu",
       "editorIDs": ["charing@hawaii.edu"],
-      "visitorIDs": ["charing@hawaii.edu", "charing@hawaii.edu"]
+      "visitorIDs": ["user-003", "user-005"]
   },
   {
       "id": "places-002",
@@ -20,14 +17,11 @@
       "description": "Under Tree in front Campus Center",
       "placeType": "community",
       "imagePath": "assets/images/diamond.png",
-      "location": {
-        "latitude": 21.3,
-        "longitude": -157.81
-      },
+      "location": "21.3003692300479,-157.81494475453513",
       "lastUpdate": "10/10/22",
       "ownerID": "charing@hawaii.edu",
-      "editorIDs": ["charing@hawaii.edu"],
-      "visitorIDs": ["charing@hawaii.edu", "charing@hawaii.edu"]
+      "editorIDs": ["user-002"],
+      "visitorIDs": ["user-001", "user-005"]
   },
   {
       "id": "places-003",
@@ -35,13 +29,10 @@
       "description": "In front of SOEST Building with shed",
       "placeType": "public",
       "imagePath": "assets/images/diamond.png",
-      "location": {
-        "latitude": 21.3,
-        "longitude": -157.81
-      },
+      "location": "2211 ALA WAI BLVD 96815 Honolulu",
       "lastUpdate": "8/10/22",
       "ownerID": "charing@hawaii.edu",
       "editorIDs": ["charing@hawaii.edu"],
-      "visitorIDs": ["charing@hawaii.edu"]
+      "visitorIDs": ["user-005"]
   }
 ]
