@@ -14,7 +14,7 @@ class Place with _$Place {
     required String id,
     required String name,
     required String description,
-    required String location,
+    required List<double> location,
     required String placeType,
     required String imagePath,
     required String ownerID,

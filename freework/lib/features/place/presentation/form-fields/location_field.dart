@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
@@ -10,9 +11,10 @@ class LocationField extends StatelessWidget {
       required this.fieldKey,
       this.currLocation});
 
-  final String? currLocation;
   final GlobalKey<FormBuilderFieldState<FormBuilderField<dynamic>, dynamic>>
       fieldKey;
+  final List<double>? currLocation;
+
 
   @override
   Widget build(BuildContext context) {

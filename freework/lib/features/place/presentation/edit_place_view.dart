@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'edit_place_controller.dart';
@@ -98,7 +100,7 @@ class EditPlaceView extends ConsumerWidget {
       // Valid so update the garden data.
       String name = _nameFieldKey.currentState?.value;
       String description = _descriptionFieldKey.currentState?.value;
-      String location = _locationFieldKey.currentState?.value;
+      List<double> location = _locationFieldKey.currentState?.value;
       String placeType = _placeTypeFieldKey.currentState?.value;
     /*   String chapterID =
           chapterDB.getChapterIDFromName(_chapterFieldKey.currentState?.value); */

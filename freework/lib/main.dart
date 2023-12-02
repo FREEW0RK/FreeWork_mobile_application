@@ -119,7 +119,7 @@ class MyApp extends ConsumerWidget {
                 case StartPage.routeName:
                     return const StartPage();
                 default:
-                    return const SigninView();
+                    return const HomeView();
                     
                 }
               },

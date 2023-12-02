@@ -23,7 +23,7 @@ mixin _$Place {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
-  String get location => throw _privateConstructorUsedError;
+  List<double> get location => throw _privateConstructorUsedError;
   String get placeType => throw _privateConstructorUsedError;
   String get imagePath => throw _privateConstructorUsedError;
   String get ownerID =>
@@ -46,7 +46,7 @@ abstract class $PlaceCopyWith<$Res> {
       {String id,
       String name,
       String description,
-      String location,
+      List<double> location,
       String placeType,
       String imagePath,
       String ownerID,
@@ -95,7 +95,7 @@ class _$PlaceCopyWithImpl<$Res, $Val extends Place>
       location: null == location
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
-              as String,
+              as List<double>,
       placeType: null == placeType
           ? _value.placeType
           : placeType // ignore: cast_nullable_to_non_nullable
@@ -135,7 +135,7 @@ abstract class _$$PlaceImplCopyWith<$Res> implements $PlaceCopyWith<$Res> {
       {String id,
       String name,
       String description,
-      String location,
+      List<double> location,
       String placeType,
       String imagePath,
       String ownerID,
@@ -180,9 +180,9 @@ class __$$PlaceImplCopyWithImpl<$Res>
           : description // ignore: cast_nullable_to_non_nullable
               as String,
       location: null == location
-          ? _value.location
+          ? _value._location
           : location // ignore: cast_nullable_to_non_nullable
-              as String,
+              as List<double>,
       placeType: null == placeType
           ? _value.placeType
           : placeType // ignore: cast_nullable_to_non_nullable
@@ -218,14 +218,15 @@ class _$PlaceImpl implements _Place {
       {required this.id,
       required this.name,
       required this.description,
-      required this.location,
+      required final List<double> location,
       required this.placeType,
       required this.imagePath,
       required this.ownerID,
       required this.lastUpdate,
       final List<String> editorIDs = const [],
       final List<String> visitorIDs = const []})
-      : _editorIDs = editorIDs,
+      : _location = location,
+        _editorIDs = editorIDs,
         _visitorIDs = visitorIDs;
 
   factory _$PlaceImpl.fromJson(Map<String, dynamic> json) =>
@@ -237,8 +238,14 @@ class _$PlaceImpl implements _Place {
   final String name;
   @override
   final String description;
+  final List<double> _location;
   @override
-  final String location;
+  List<double> get location {
+    if (_location is EqualUnmodifiableListView) return _location;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_location);
+  }
+
   @override
   final String placeType;
   @override
@@ -280,8 +287,7 @@ class _$PlaceImpl implements _Place {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            (identical(other.location, location) ||
-                other.location == location) &&
+            const DeepCollectionEquality().equals(other._location, _location) &&
             (identical(other.placeType, placeType) ||
                 other.placeType == placeType) &&
             (identical(other.imagePath, imagePath) ||
@@ -302,7 +308,7 @@ class _$PlaceImpl implements _Place {
       id,
       name,
       description,
-      location,
+      const DeepCollectionEquality().hash(_location),
       placeType,
       imagePath,
       ownerID,
@@ -329,7 +335,7 @@ abstract class _Place implements Place {
       {required final String id,
       required final String name,
       required final String description,
-      required final String location,
+      required final List<double> location,
       required final String placeType,
       required final String imagePath,
       required final String ownerID,
@@ -346,7 +352,7 @@ abstract class _Place implements Place {
   @override
   String get description;
   @override
-  String get location;
+  List<double> get location;
   @override
   String get placeType;
   @override

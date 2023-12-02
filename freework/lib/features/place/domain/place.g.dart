@@ -10,7 +10,9 @@ _$PlaceImpl _$$PlaceImplFromJson(Map<String, dynamic> json) => _$PlaceImpl(
       id: json['id'] as String,
       name: json['name'] as String,
       description: json['description'] as String,
-      location: json['location'] as String,
+      location: (json['location'] as List<dynamic>)
+          .map((e) => (e as num).toDouble())
+          .toList(),
       placeType: json['placeType'] as String,
       imagePath: json['imagePath'] as String,
       ownerID: json['ownerID'] as String,

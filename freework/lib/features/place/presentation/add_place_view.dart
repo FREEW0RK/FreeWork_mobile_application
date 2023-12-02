@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -91,7 +93,7 @@ class AddPlaceView extends ConsumerWidget {
       String name = _nameFieldKey.currentState?.value;
       String description = _descriptionFieldKey.currentState?.value;
       //String chapterID = chapterCollection.getChapterIDFromName(_chapterFieldKey.currentState?.value);
-      String location = _locationFieldKey.currentState?.value;
+      List<double> location = _locationFieldKey.currentState?.value;
       String placeType = _placeTypeFieldKey.currentState?.value;
       String imageFileName = _photoFieldKey.currentState?.value;
       String editorsString = _editorsFieldKey.currentState?.value ?? '';

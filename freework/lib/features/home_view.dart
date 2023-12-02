@@ -1,8 +1,8 @@
-import 'dart:collection';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freework/features/map/presentation/main_map.dart';
+import 'package:freework/features/poll/presentation/poll.dart';
 import 'drawer_view.dart';
 import 'help/presentation/help_button.dart';
 import 'place/domain/place.dart';
@@ -87,11 +87,20 @@ class _HomeViewState extends ConsumerState<HomeView> {
          1: {
         'title': const Text('Map'),
         'body':  const MainMap(),
-        'navItem': BottomNavigationBarItem(
+        'navItem': const BottomNavigationBarItem(
           label: 'My FW Map',
-          icon: const Icon(Icons.location_pin),
+          icon: Icon(Icons.location_pin),
         ),
       },
+       2: {
+        'title': const Text('Preferences'),
+        'body': const PollingPage(),
+        'navItem': const BottomNavigationBarItem(
+          label: 'My Preferences',
+          icon: Icon(Icons.chat),
+        ),
+      },
+
     };
 /* 
     final Map pages = {
