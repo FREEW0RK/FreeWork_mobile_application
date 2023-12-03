@@ -17,10 +17,8 @@ class Place with _$Place {
     required String id,
     required String name,
     required String description,
-     @JsonKey(
-      fromJson: _geoPointFromJson,
-      toJson: _geoPointToJson,
-    ) required GeoPoint location,    
+    //@JsonKey(fromJson: _geoPointFromJson, toJson: _geoPointToJson,) required GeoPoint location,
+    @GeoPointConverter() required GeoPoint location,
     required String placeType,
     required String imagePath,
     required String ownerID,
@@ -29,23 +27,67 @@ class Place with _$Place {
     @Default([]) List<String> editorIDs,
     @Default([]) List<String> visitorIDs,
   }) = _Place;
-
+   
   factory Place.fromJson(Map<String, dynamic> json) => _$PlaceFromJson(json);
 
- static GeoPoint _geoPointFromJson(Map<String, dynamic> json) {
-  final location = json['location'] as Map<String, dynamic>;
-  return GeoPoint(
-    (location['latitude'] as num).toDouble(),
-    (location['longitude'] as num).toDouble(),
-  );
+
+
+
+ // Test that the json file can be converted into entities.
+  static Future<List<Place>> checkInitialData() async {
+    String content =
+        await rootBundle.loadString("assets/images/places.json");
+    List<dynamic> initialData = json.decode(content);
+    return initialData.map((jsonData) => Place.fromJson(jsonData)).toList();
+  } 
+
 }
 
-  static Map<String, dynamic> _geoPointToJson(GeoPoint geoPoint) {
+ GeoPoint _geoPointFromJson(Map<String, dynamic> json) =>
+      GeoPointConverter().fromJson(json['location']);
+
+ Map<String, dynamic> _geoPointToJson(GeoPoint geoPoint) =>
+      {'location': GeoPointConverter().toJson(geoPoint)};
+
+
+
+/* class GeoPointConverter
+    implements JsonConverter<GeoPoint, GeoPoint> {
+  const GeoPointConverter();
+
+  @override
+  GeoPoint fromJson(GeoPoint geoPoint) {
+    return geoPoint;
+  }
+
+  @override
+  GeoPoint toJson(GeoPoint geoPoint) =>
+      geoPoint;
+} */
+
+class GeoPointConverter implements JsonConverter<GeoPoint, Map<String, dynamic>> {
+  const GeoPointConverter();
+
+  @override
+  GeoPoint fromJson(Map<String, dynamic> json) {
+    return GeoPoint(
+      (json['latitude'] as num).toDouble(),
+      (json['longitude'] as num).toDouble(),
+    );
+  }
+
+  @override
+  Map<String, dynamic> toJson(GeoPoint object) {
     return {
-      'latitude': geoPoint.latitude,
-      'longitude': geoPoint.longitude,
+      'latitude': object.latitude,
+      'longitude': object.longitude,
     };
   }
+}
+
+
+
+
    /* factory Place.fromJson(Map<String, dynamic> json) {
     return Place(
       id: json['id'] as String,
@@ -85,44 +127,3 @@ class Place with _$Place {
   }
   return places;
 } */
-
- // Test that the json file can be converted into entities.
-  static Future<List<Place>> checkInitialData() async {
-    String content =
-        await rootBundle.loadString("assets/images/places.json");
-    List<dynamic> initialData = json.decode(content);
-    return initialData.map((jsonData) => Place.fromJson(jsonData)).toList();
-  } 
-}
-
-class GeoPointConverter implements JsonConverter<GeoPoint, Map<String, dynamic>> {
-  const GeoPointConverter();
-
-  @override
-  GeoPoint fromJson(Map<String, dynamic> json) {
-    return GeoPoint(
-      (json['latitude'] as num).toDouble(),
-      (json['longitude'] as num).toDouble(),
-    );
-  }
-
-  @override
-  Map<String, dynamic> toJson(GeoPoint object) {
-    return {
-      'latitude': object.latitude,
-      'longitude': object.longitude,
-    };
-  }
-}
-
-
-
-
-
-/* 
-
-   location:
-          GeoPoint(
-            (json['location']['latitude'] as num).toDouble(),
-            (json['location']['longitude'] as num).toDouble(),
-          ), */

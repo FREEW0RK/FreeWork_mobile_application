@@ -10,11 +10,8 @@ Place _$PlaceFromJson(Map<String, dynamic> json) => Place(
       id: json['id'] as String,
       name: json['name'] as String,
       description: json['description'] as String,
-      location:
-          GeoPoint(
-            (json['location']['latitude'] as num).toDouble(),
-            (json['location']['longitude'] as num).toDouble(),
-          ),
+      location: const GeoPointConverter()
+          .fromJson(json['location'] as Map<String, dynamic>),
       placeType: json['placeType'] as String,
       imagePath: json['imagePath'] as String,
       ownerID: json['ownerID'] as String,
@@ -43,11 +40,8 @@ _$PlaceImpl _$$PlaceImplFromJson(Map<String, dynamic> json) => _$PlaceImpl(
       id: json['id'] as String,
       name: json['name'] as String,
       description: json['description'] as String,
-      location:
-          GeoPoint(
-            (json['location']['latitude'] as num).toDouble(),
-            (json['location']['longitude'] as num).toDouble(),
-          ),
+      location: const GeoPointConverter()
+          .fromJson(json['location'] as Map<String, dynamic>),
       placeType: json['placeType'] as String,
       imagePath: json['imagePath'] as String,
       ownerID: json['ownerID'] as String,

@@ -16,13 +16,14 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /* Place _$PlaceFromJson(Map<String, dynamic> json) {
   return _Place.fromJson(json);
-}
- */
+} */
+
 /// @nodoc
 mixin _$Place {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  String get description => throw _privateConstructorUsedError;
+  String get description =>
+      throw _privateConstructorUsedError; //@JsonKey(fromJson: _geoPointFromJson, toJson: _geoPointToJson,) required GeoPoint location,
   @GeoPointConverter()
   GeoPoint get location => throw _privateConstructorUsedError;
   String get placeType => throw _privateConstructorUsedError;
@@ -238,6 +239,7 @@ class _$PlaceImpl with DiagnosticableTreeMixin implements _Place {
   final String name;
   @override
   final String description;
+//@JsonKey(fromJson: _geoPointFromJson, toJson: _geoPointToJson,) required GeoPoint location,
   @override
   @GeoPointConverter()
   final GeoPoint location;
@@ -364,7 +366,7 @@ abstract class _Place implements Place {
   String get name;
   @override
   String get description;
-  @override
+  @override //@JsonKey(fromJson: _geoPointFromJson, toJson: _geoPointToJson,) required GeoPoint location,
   @GeoPointConverter()
   GeoPoint get location;
   @override
