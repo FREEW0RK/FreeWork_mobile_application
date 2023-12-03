@@ -16,8 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /* Place _$PlaceFromJson(Map<String, dynamic> json) {
   return _Place.fromJson(json);
-} */
-
+}
+ */
 /// @nodoc
 mixin _$Place {
   String get id => throw _privateConstructorUsedError;
