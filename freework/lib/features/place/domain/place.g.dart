@@ -6,42 +6,12 @@ part of 'place.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Place _$PlaceFromJson(Map<String, dynamic> json) => Place(
-      id: json['id'] as String,
-      name: json['name'] as String,
-      description: json['description'] as String,
-      location: const GeoPointConverter()
-          .fromJson(json['location'] as Map<String, dynamic>),
-      placeType: json['placeType'] as String,
-      imagePath: json['imagePath'] as String,
-      ownerID: json['ownerID'] as String,
-      lastUpdate: json['lastUpdate'] as String,
-      editorIDs:
-          (json['editorIDs'] as List<dynamic>).map((e) => e as String).toList(),
-      visitorIDs: (json['visitorIDs'] as List<dynamic>)
-          .map((e) => e as String)
-          .toList(),
-    );
-
-Map<String, dynamic> _$PlaceToJson(Place instance) => <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
-      'description': instance.description,
-      'location': const GeoPointConverter().toJson(instance.location),
-      'placeType': instance.placeType,
-      'imagePath': instance.imagePath,
-      'ownerID': instance.ownerID,
-      'lastUpdate': instance.lastUpdate,
-      'editorIDs': instance.editorIDs,
-      'visitorIDs': instance.visitorIDs,
-    };
-
 _$PlaceImpl _$$PlaceImplFromJson(Map<String, dynamic> json) => _$PlaceImpl(
       id: json['id'] as String,
       name: json['name'] as String,
       description: json['description'] as String,
-      location: const GeoPointConverter()
-          .fromJson(json['location'] as Map<String, dynamic>),
+      location:
+          const GeoPointConverter().fromJson(json['location'] as GeoPoint),
       placeType: json['placeType'] as String,
       imagePath: json['imagePath'] as String,
       ownerID: json['ownerID'] as String,

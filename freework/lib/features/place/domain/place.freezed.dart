@@ -14,10 +14,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-/* Place _$PlaceFromJson(Map<String, dynamic> json) {
+Place _$PlaceFromJson(Map<String, dynamic> json) {
   return _Place.fromJson(json);
 }
- */
+
 /// @nodoc
 mixin _$Place {
   String get id => throw _privateConstructorUsedError;
