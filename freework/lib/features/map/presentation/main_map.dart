@@ -76,11 +76,11 @@ class _MainMapState extends State<MainMap> {
 
   void retrievePlaces() async {
       final Map<String, BitmapDescriptor> placeTypeIcons = {
-      "Public": BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue),
-      "Community": BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen),
+      "Public": BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueAzure),
+      "Community": BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueViolet),
       "AirNiceFWSpot": BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueYellow),
       "Remote": BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueOrange),
-      "Super Remote": BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
+      "Super Remote": BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueMagenta),
       };
 
     // Fetch places from Firestore

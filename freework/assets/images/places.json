@@ -4,10 +4,10 @@
       "name": "University of Hawaii at Manoa (UHM)",
       "description": "Outdoor Workplaces in front of Natural Science Building with shed and electricity",
       "placeType": "public",
-      "imagePath": "assets/images/lifesciences_electriciy.jpg",
+      "imagePath": "assets/images/lifesciences.jpg",
       "location": {
-        "latitude": 21.3,
-        "longitude": -157.85
+        "latitude": 21.300097112113995, 
+        "longitude": -157.814889532487
       },
       "lastUpdate": "11/15/22",
       "ownerID": "charing@hawaii.edu",
@@ -19,10 +19,10 @@
       "name": "University of Hawaii at Manoa (UHM)",
       "description": "Under Tree in front Campus Center",
       "placeType": "community",
-      "imagePath": "assets/images/diamond.png",
+      "imagePath": "assets/images/manoacampuscenter.jpg",
       "location": {
-        "latitude": 21.3,
-        "longitude": -157.89
+        "latitude": 21.298972805151912,
+        "longitude": -157.81905737539074
       },
       "lastUpdate": "10/10/22",
       "ownerID": "charing@hawaii.edu",
@@ -36,8 +36,8 @@
       "placeType": "public",
       "imagePath": "assets/images/soest.jpg",
       "location": {
-        "latitude": 21.3,
-        "longitude": -157.81
+        "latitude": 21.2982373134366,
+        "longitude": -157.81645188073284
       },
       "lastUpdate": "8/10/22",
       "ownerID": "charing@hawaii.edu",
