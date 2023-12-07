@@ -199,3 +199,4 @@ class AddPlaceView extends ConsumerWidget {
 final placeTypesProvider = Provider<List<String>>((ref) {
   return ["Public", "Community", "AirNiceFWSpot","Remote", "Super Remote"];
 });
+

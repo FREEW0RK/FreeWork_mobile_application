@@ -4,7 +4,7 @@
       "name": "University of Hawaii at Manoa (UHM)",
       "description": "Outdoor Workplaces in front of Natural Science Building with shed and electricity",
       "placeType": "public",
-      "imagePath": "assets/images/diamond.png",
+      "imagePath": "assets/images/lifesciences_electriciy.jpg",
       "location": {
         "latitude": 21.3,
         "longitude": -157.85
@@ -34,7 +34,7 @@
       "name": "University of Hawaii at Manoa (UHM)",
       "description": "In front of SOEST Building with shed",
       "placeType": "public",
-      "imagePath": "assets/images/diamond.png",
+      "imagePath": "assets/images/soest.jpg",
       "location": {
         "latitude": 21.3,
         "longitude": -157.81

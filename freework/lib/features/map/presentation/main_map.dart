@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:freework/features/place/presentation/add_place_view.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:convert';
@@ -7,6 +8,12 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+
+
+
+
+
+
 
 
 
@@ -68,22 +75,43 @@ class _MainMapState extends State<MainMap> {
 
 
   void retrievePlaces() async {
+      final Map<String, BitmapDescriptor> placeTypeIcons = {
+      "Public": BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue),
+      "Community": BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen),
+      "AirNiceFWSpot": BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueYellow),
+      "Remote": BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueOrange),
+      "Super Remote": BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
+      };
+
     // Fetch places from Firestore
     QuerySnapshot<Map<String, dynamic>> placesSnapshot = await FirebaseFirestore.instance.collection('places').get();
     for (QueryDocumentSnapshot<Map<String, dynamic>> placeSnapshot in placesSnapshot.docs) {
       Map<String, dynamic> placeData = placeSnapshot.data()!;
       String id = placeSnapshot.id;
       String name = placeData['name'];
+      String description = placeData['description'];
+      String placeType = placeData['placeType'];
+      String imagePath = placeData['imagePath'];
+
     // Access latitude and longitude directly from GeoPoint
       double latitude = placeData["location"].latitude;
       double longitude = placeData["location"].longitude;
-    markers.add(
-      Marker(
-        markerId: MarkerId(id),
-        position: LatLng(latitude, longitude),
-        infoWindow: InfoWindow(title: name),
-        // icon: markerIcon,
+
+       // Create a marker with a custom icon and infoWindow
+      markers.add(
+        Marker(
+          markerId: MarkerId(id),
+          position: LatLng(latitude, longitude),
+           infoWindow: InfoWindow(
+          title: name,
+          snippet: 'Type: $placeType',
         ),
+        onTap: () {
+          // When marker is tapped, show a custom widget
+          _showMarkerInfo(context, name, placeType, description, imagePath);
+        },
+          icon: placeTypeIcons[placeType] ?? BitmapDescriptor.defaultMarker,
+        ),    
       );
     }
 
@@ -93,7 +121,7 @@ class _MainMapState extends State<MainMap> {
       setState(() {});
     }
   }
-
+  
 
   void moveCameraToInitialPosition() {
     if (mapController != null) {
@@ -140,7 +168,67 @@ Future<void> _goToInitPos() async {
     mapController?.animateCamera(CameraUpdate.newCameraPosition(_UHmanoa));
 }
 
+Future<BitmapDescriptor> _getCustomIcon(String imagePath) async {
+  return BitmapDescriptor.fromAssetImage(
+    ImageConfiguration(size: Size(48, 48)),
+    imagePath,
+  );
 }
+
+
+
+void _showMarkerInfo(
+  BuildContext context, String name, String placeType, String description, String imagePath) {
+  showModalBottomSheet(
+    context: context,
+    builder: (BuildContext context) {
+      return Container(
+        padding: EdgeInsets.all(16),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              name,
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 8),
+            Text('Type: $placeType'),
+            Text('Description: $description'),
+            SizedBox(height: 8),
+            Container(
+              height: 100,
+              width: 100,
+              child: Image.asset(imagePath, fit: BoxFit.cover), // Use BoxFit to fit the image within the container
+            ),
+          ],
+        ),
+      );
+    },
+  );
+}
+
+
+
+
+}
+
+
+
+/* final placeTypeIconsProvider = Provider<Map<String, BitmapDescriptor>>((ref) {
+  final placeTypes = ref.read(placeTypesProvider);
+
+  // Define icons for each place type
+  final icons = <String, BitmapDescriptor>{    
+    "Public": BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue),
+    //"Public": BitmapDescriptor.fromAssetImage(ImageConfiguration(size: Size(48, 48)), "assets/images/freeworklogoearthgrinsgesicht.jpg"),
+    "Community": BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen),
+    "AirNiceFWSpot": BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueYellow),
+    "Remote": BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueOrange),
+    "Super Remote": BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
+  };
+  return icons;
+}); */
+
 
 
 
