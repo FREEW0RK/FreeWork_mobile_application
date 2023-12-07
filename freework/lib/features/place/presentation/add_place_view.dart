@@ -85,7 +85,14 @@ class AddPlaceView extends ConsumerWidget {
     UserCollection userCollection = UserCollection(users);
 
 
- 
+    GeoPoint _createGeoPointFromInput(String locationString) {
+    // Split the location string into latitude and longitude
+    List<String> locationValues = locationString.split(', ');
+    double latitude = double.parse(locationValues[0]);
+    double longitude = double.parse(locationValues[1]);
+
+  return GeoPoint(latitude, longitude);
+}
     void onSubmit() {
       bool isValid = _formKey.currentState?.saveAndValidate() ?? false;
       if (!isValid) return;
@@ -93,7 +100,8 @@ class AddPlaceView extends ConsumerWidget {
       String name = _nameFieldKey.currentState?.value;
       String description = _descriptionFieldKey.currentState?.value;
       //String chapterID = chapterCollection.getChapterIDFromName(_chapterFieldKey.currentState?.value);
-      GeoPoint location = _locationFieldKey.currentState?.value;
+      String locationString = _locationFieldKey.currentState?.value;
+    	GeoPoint location = _createGeoPointFromInput(locationString); // Create GeoPoint
       String placeType = _placeTypeFieldKey.currentState?.value;
       String imageFileName = _photoFieldKey.currentState?.value;
       String editorsString = _editorsFieldKey.currentState?.value ?? '';
@@ -117,6 +125,8 @@ class AddPlaceView extends ConsumerWidget {
         editorIDs: editorIDs,
         ownerID: currentUserID,
         visitorIDs: visitorIDs,);
+
+        
     ref.read(editPlaceControllerProvider.notifier).updatePlace(
             place: place,
             onSuccess: () {

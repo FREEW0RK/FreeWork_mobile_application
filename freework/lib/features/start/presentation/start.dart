@@ -34,7 +34,7 @@ class _StartPageState extends State<StartPage> {
 @override
 void initState() {
   super.initState();
-  _controller = VideoPlayerController.asset('assets/videos/1080p_places.mp4')
+  _controller = VideoPlayerController.asset('assets/videos/1080p_places.mov')
     ..initialize().then((_) {
       setState(() {
         // Ensure the first frame is shown
@@ -69,13 +69,27 @@ void initState() {
               // Navigate to the '/sign_in' screen
               Navigator.pushReplacementNamed(context, '/sign_in');
             },
-            child: Container(
-              alignment: Alignment.center,
+                child: Container(
+              padding: EdgeInsets.all(10.0), // Adjust the padding as needed
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10.0), // Adjust the border radius as needed
+                border: Border.all(
+                  color: Colors.white,
+                  width: 2.0, // Adjust the border width as needed
+                ),
+              ),
               child: const Text(
-                '  Start Exploring',
+                'Start Exploring',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 50.0,
+                  shadows: [
+                    Shadow(
+                      color: Colors.white, // You can change this to add a different shadow color
+                      blurRadius: 3,
+                      offset: Offset(2, 2),
+                    ),
+                  ]
                 ),
               ),
             ),

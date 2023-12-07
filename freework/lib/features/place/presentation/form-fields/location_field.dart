@@ -35,7 +35,6 @@ class LocationField extends StatelessWidget {
             // Custom validation logic for GeoPoint or separate latitude and longitude.
             var locationValues = value?.split(', ');
             if (locationValues != null &&
-                locationValues.length == 2 &&
                 double.tryParse(locationValues[0]) != null &&
                 double.tryParse(locationValues[1]) != null) {
               return null; // Validation passed.
